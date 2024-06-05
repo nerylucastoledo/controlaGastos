@@ -1,0 +1,17 @@
+.has-account {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 32px;
+
+  a {
+    text-decoration: underline;
+    color: #FFA8A8;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 988px) {
+  .has-account {
+    margin-bottom: 0;
+  }
+}
