@@ -1,4 +1,5 @@
 import "./Header.scss"
+
 import Logo from "../../assets/logo.png"
 
 import { RiMenu2Fill } from 'react-icons/ri';
@@ -9,7 +10,7 @@ import Menu from "./menu/Menu";
 
 export const Header = () => {
   return (
-    <header>
+    <header className="header">
       <img src={Logo} alt="logo_prinicpal" />
       
       <div className="header-mobile">

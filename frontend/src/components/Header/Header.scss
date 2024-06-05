@@ -1,14 +1,9 @@
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
   border-bottom: 1px solid #F1F1F1;
-
-  img {
-    width: 140px;
-    height: 69px;
-  }
 
   .header-desktop {
     display: none;
@@ -84,7 +79,7 @@ header {
 }
 
 @media (min-width: 988px) {
-  header {
+  .header {
     width: 280px;
     flex-direction: column;
     justify-content: flex-start;
