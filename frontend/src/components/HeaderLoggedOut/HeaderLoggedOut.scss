@@ -1,0 +1,10 @@
+.logged-out-header {
+  padding: 16px;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+@media (min-width: 988px) {
+  .logged-out-header {
+    display: none;
+  }
+}
