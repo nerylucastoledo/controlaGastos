@@ -11,7 +11,7 @@ import Menu from "./menu/Menu";
 export const Header = () => {
   return (
     <header className="header">
-      <img src={Logo} alt="logo_prinicpal" />
+      <a href="/"><img src={Logo} alt="logo_prinicpal" /></a>
       
       <div className="header-mobile">
         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile" aria-controls="menuMobile">
