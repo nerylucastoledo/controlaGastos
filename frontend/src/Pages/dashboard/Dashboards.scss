@@ -1,0 +1,26 @@
+.dashboard {
+
+  &__container {
+    padding: 0 16px;
+
+    &-info {
+      h1 {
+        text-align: left;
+        margin: 24px 0 8px;
+      }
+
+      p {
+        color: #595959;
+      }
+    }
+
+    &-select {
+      display: flex;
+      gap: 16px;
+
+      div {
+        flex-grow: 1;
+      }
+    }
+  }
+}

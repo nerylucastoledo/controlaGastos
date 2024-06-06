@@ -1,0 +1,126 @@
+// Form
+form {
+  max-width: 400px;
+  padding: 0 16px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+// buttons
+.btn-primary-custom, .btn-secondary-custom {
+  border: unset;
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+  border-radius: 30px;
+  margin-top: 24px;
+  display: block;
+  margin: 0 auto;
+  max-width: 400px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #CCC;
+  }
+}
+
+.btn-primary-custom {
+  background-color: #FFA8A8;
+  color: #fff;
+
+  &:disabled {
+    background-color: #CCC;
+  }
+}
+
+.btn-secondary-custom {
+  background-color: #FFF7F7;
+  color: #595959;
+  margin-top: 24px;
+  max-width: 400px;
+}
+
+// Input
+.form-group {
+  margin-bottom: 16px;
+
+  &:has(.input-error) {
+    input {
+      border-color: #B22222;
+
+      &::placeholder {
+        color: #B22222;
+      }
+    }
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #595959;
+}
+
+input, select {
+  padding: 16px;
+  border: 1px solid #CCCCCC;
+  background-color: #fff;
+  max-width: 400px;
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  color: #595959;
+
+  &::placeholder {
+    color: #CCC;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &:focus-visible {
+    outline: unset;
+    border-color: #595959;
+  }
+}
+
+.input-error {
+  color: #B22222;
+  font-size: 12px;
+  margin-bottom: 16px;
+  margin-top: 4px;
+}
+
+// Select
+.select-group {
+  position: relative;
+  margin-top: 24px;
+
+  label {
+    position: absolute;
+    left: 16px;
+    top: 6px;
+    font-size: 12px;
+  }
+
+  select {
+    padding: 24px 16px 8px 12px;
+    color: #595959;
+    background-image: unset;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent !important;
+    background-position: right 16px center !important;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-image: url("../assets/select.png");
+  }
+}
+
+@media (min-width: 988px) {
+  form {
+    padding: 32px 16px;
+    min-width: 432px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+}

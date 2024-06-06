@@ -3,13 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./App.scss"
+import "./style/global.scss"
 
-import Dashboard from "./Pages/dashboard/Dashboard";
-import Report from "./Pages/report/Report";
-import Login from "./Pages/login/Login";
-import CreateAccount from "./Pages/createAccount/CreateAccount";
-import NotFound from "./Pages/notFound/NotFound";
-import Config from "./Pages/config/Config";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Report from "./pages/report/Report";
+import Login from "./pages/Login/Login";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import NotFound from "./pages/NotFound/NotFound";
+import Settings from "./pages/Settings/Settings";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/report" element={<Report />} />
-        <Route path="/config" element={<Config />} />
+        <Route path="/config" element={<Settings />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
