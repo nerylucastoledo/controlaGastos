@@ -13,7 +13,7 @@ const CreateAccount = () => {
 
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
-  const [salary, setSalary] = useState("0")
+  const [salary, setSalary] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [errors, setErrors] = useState<string[]>([]);
