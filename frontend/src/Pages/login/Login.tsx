@@ -14,6 +14,12 @@ const Login = () => {
   const [message, setMessage] = useState("")
   const [error, setError] = useState(false)
 
+  const addCookies = (accessToken: string, expirationTime: string) => {
+    const expires = new Date(expirationTime);
+    document.cookie = `access_token=${accessToken};`;
+    document.cookie = `expires=${expires.toUTCString()};`;
+  }
+
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
     const btnSubmit = document.querySelector(".btn-primary-custom") as HTMLButtonElement;
@@ -31,7 +37,7 @@ const Login = () => {
       return
     }
 
-    fetch(`${import.meta.env.VITE_DEFAULT_URL}/login`, {
+    fetch(`${process.env.VITE_DEFAULT_URL}/login`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -44,7 +50,9 @@ const Login = () => {
     .then(response => response.json())
     .then(data => {
       if (data.error) throw new Error()
-      
+
+      const { accessToken, expirationTime } = data.userCredential.user.stsTokenManager;
+      addCookies(accessToken, expirationTime)
       setMessage(data.message)
       setError(false)
       setTimeout(() => navigate("/"), 2000);

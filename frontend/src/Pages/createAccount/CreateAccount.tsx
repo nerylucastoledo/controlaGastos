@@ -41,7 +41,7 @@ const CreateAccount = () => {
       return
     }
 
-    fetch(`${import.meta.env.VITE_DEFAULT_URL}/register`, {
+    fetch(`${process.env.VITE_DEFAULT_UR}/register`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
