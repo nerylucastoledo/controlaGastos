@@ -56,22 +56,28 @@ const CreateAccount = () => {
     })
     .then(response => response.json())
     .then(data => {
+      if (data.error) throw new Error()
+      
       setMessage(data.message)
       setTimeout(() => navigate("/login"), 2000);
     })
     .catch(error => {
-      btnSubmit.disabled = true;
+      btnSubmit.disabled = false;
       setError(true)
       setMessage(error)
-      setTimeout(() => navigate("/login"), 2000);
     });
+  }
+
+  const closeToast = () => {
+    setMessage("")
+    setError(false)
   }
   
   return (
     <>
       <HeaderLoggedOut />
 
-      {message && <Toast message={message} error={error}/>}
+      {message && <Toast message={message} error={error} hideToast={closeToast} />}
 
       <div className="introduction">
         <div className="introduction__container">
@@ -90,7 +96,7 @@ const CreateAccount = () => {
               placeholder="Seu e-mail"
               value={email}
               onChange={({ currentTarget }) => setEmail(currentTarget.value)}
-              errorMessage={errors.includes("email") ?  "E-mail não pode ser vazia!" : ""}
+              errorMessage={errors.includes("email") ?  "E-mail não pode ser vazio!" : ""}
             />
 
             <InputField
