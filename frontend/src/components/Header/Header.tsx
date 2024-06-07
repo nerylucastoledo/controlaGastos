@@ -18,7 +18,7 @@ export const Header = () => {
           <RiMenu2Fill color="#ffa8a8" size={36} />
         </button>
 
-        <div className="offcanvas offcanvas-start" tabIndex="-1" id="menuMobile" aria-labelledby="menuMobileLabel">
+        <div className="offcanvas offcanvas-start" tabIndex={-1} id="menuMobile" aria-labelledby="menuMobileLabel">
           <div className="offcanvas-header">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile" aria-controls="menuMobile">
               <IoMdClose size={36} color="#595959"/>
