@@ -14,7 +14,7 @@ export const Header = () => {
       <a href="/"><img src={Logo} alt="logo_prinicpal" /></a>
       
       <div className="header-mobile">
-        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile" aria-controls="menuMobile">
+        <button id="closeMenu" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile" aria-controls="menuMobile" aria-label="Menu de celular">
           <RiMenu2Fill color="#ffa8a8" size={36} />
         </button>
 
