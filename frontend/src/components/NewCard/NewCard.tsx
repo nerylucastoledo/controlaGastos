@@ -10,7 +10,7 @@ const NewCard = () => {
   const [username] = useLocalStorage("username", "")
   const [name, setName] = useState("")
   const [color, setColor] = useState("")
-  const [inputError, setInputError] = useState(false)
+  const [errors, setErrors] = useState<string[]>([]);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("")
 
@@ -25,9 +25,20 @@ const NewCard = () => {
     const btnSubmit = document.querySelector("#formNewcard .btn-primary-custom") as HTMLButtonElement;
     btnSubmit.disabled = true;
 
+    const newErrors: string[] = [];
+
     if (!name) {
+      newErrors.push("name")
+    }
+
+    if (!color) {
+      newErrors.push("color")
+    }
+
+    setErrors(newErrors);
+
+    if (newErrors.length) {
       btnSubmit.disabled = false;
-      setInputError(true)
       return
     }
 
@@ -49,6 +60,9 @@ const NewCard = () => {
       const { message } = data
       setMessage(message)
       setError(false)
+      setErrors([])
+      setName("")
+      setColor("")
       
       setTimeout(() => {
         btnSubmit.disabled = false;
@@ -82,7 +96,7 @@ const NewCard = () => {
                 placeholder="Nome do cartão"
                 value={name}
                 onChange={({ currentTarget }) => setName(currentTarget.value)}
-                errorMessage={inputError ?  "Nome não pode ser vazio!" : ""}
+                errorMessage={errors.includes("name") ?  "Nome não pode ser vazio!" : ""}
               />
 
               <InputField
@@ -93,7 +107,7 @@ const NewCard = () => {
                 value={color}
                 onChange={({ currentTarget }) => setColor(currentTarget.value)}
                 style={{ backgroundColor: color && `${color}`, borderRadius: "20px", height: "60px" }}
-                errorMessage={inputError ?  "Cor não pode ser vazia!" : ""}
+                errorMessage={errors.includes("color") ?  "Cor não pode ser vazia!" : ""}
                 />
 
               <button 

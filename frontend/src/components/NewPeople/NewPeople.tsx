@@ -47,6 +47,7 @@ const NewPeople = () => {
       const { message } = data
       setMessage(message)
       setError(false)
+      setName("")
       
       setTimeout(() => {
         btnSubmit.disabled = false;

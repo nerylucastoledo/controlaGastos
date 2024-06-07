@@ -57,7 +57,7 @@ describe("New card component", () => {
     fireEvent.click(addCardBtn)
 
     const inputNameError = screen.getByText('Nome não pode ser vazio!')
-    const inputColorError = screen.getByText('Nome não pode ser vazio!')
+    const inputColorError = screen.getByText('Cor não pode ser vazia!')
     
     expect(inputNameError).toBeInTheDocument()
     expect(inputColorError).toBeInTheDocument()
