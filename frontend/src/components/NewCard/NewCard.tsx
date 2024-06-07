@@ -7,7 +7,7 @@ import useLocalStorage from "../../hooks/useLocalStorage"
 import Toast from "../Toast/Toast"
 
 const NewCard = () => {
-  const [username, setUsername] = useLocalStorage("username", "")
+  const [username] = useLocalStorage("username", "")
   const [name, setName] = useState("")
   const [color, setColor] = useState("")
   const [inputError, setInputError] = useState(false)
@@ -63,7 +63,7 @@ const NewCard = () => {
   }
 
   return (
-    <div className="modal fade" id="newCard" tabIndex="-1" aria-labelledby="newCardLabel" aria-hidden="true">
+    <div className="modal fade" id="newCard" tabIndex={-1} aria-labelledby="newCardLabel" aria-hidden="true">
       {message && <Toast message={message} error={error} hideToast={closeToast} />}
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
@@ -94,14 +94,14 @@ const NewCard = () => {
                 onChange={({ currentTarget }) => setColor(currentTarget.value)}
                 style={{ backgroundColor: color && `${color}`, borderRadius: "20px", height: "60px" }}
                 errorMessage={inputError ?  "Cor não pode ser vazia!" : ""}
-              />
+                />
 
               <button 
                 type="submit" 
                 className="btn-primary-custom" 
                 style={{ marginTop: "24px" }}
               >
-                Entrar
+                Cadastrar
               </button>
             </form>
           </div>

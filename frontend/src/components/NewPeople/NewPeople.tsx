@@ -7,7 +7,7 @@ import useLocalStorage from "../../hooks/useLocalStorage"
 import Toast from "../Toast/Toast"
 
 const NewPeople = () => {
-  const [username, setUsername] = useLocalStorage("username", "")
+  const [username] = useLocalStorage("username", "")
   const [name, setName] = useState("")
   const [inputError, setInputError] = useState(false)
   const [error, setError] = useState(false);
@@ -61,7 +61,7 @@ const NewPeople = () => {
   }
 
   return (
-    <div className="modal fade" id="newPeople" tabIndex="-1" aria-labelledby="newPeopleLabel" aria-hidden="true">
+    <div className="modal fade" id="newPeople" tabIndex={-1} aria-labelledby="newPeopleLabel" aria-hidden="true">
       {message && <Toast message={message} error={error} hideToast={closeToast} />}
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
