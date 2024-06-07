@@ -22,7 +22,7 @@ const CreateAccount = () => {
 
   const handleCreateAccount = (e: FormEvent) => {
     e.preventDefault()
-    const btnSubmit = document.querySelector(".btn-primary-custom") as HTMLButtonElement;
+    const btnSubmit = document.querySelector("#formCreateAccount .btn-primary-custom") as HTMLButtonElement;
     btnSubmit.disabled = true;
 
     const newErrors: string[] = [];
@@ -41,7 +41,8 @@ const CreateAccount = () => {
       return
     }
 
-    fetch(`${process.env.VITE_DEFAULT_UR}/register`, {
+    const id = Math.random().toString(16).slice(2)
+    fetch(`${process.env.VITE_DEFAULT_URL}/register`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -51,7 +52,7 @@ const CreateAccount = () => {
         password, 
         salary,
         name,
-        username: `${name}${email}` 
+        username: `${name}${id}` 
       }) 
     })
     .then(response => response.json())
@@ -88,7 +89,7 @@ const CreateAccount = () => {
         <div>
           <h1>Crie sua conta</h1>
 
-          <form onSubmit={handleCreateAccount}>
+          <form id='formCreateAccount' onSubmit={handleCreateAccount}>
             <InputField
               label="E-mail" 
               name="mail"

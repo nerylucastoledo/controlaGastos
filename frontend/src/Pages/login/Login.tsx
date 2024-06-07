@@ -20,9 +20,13 @@ const Login = () => {
     document.cookie = `expires=${expires.toUTCString()};`;
   }
 
+  const addUsername = (username: string) => {
+    window.localStorage.setItem('username', username)
+  }
+
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
-    const btnSubmit = document.querySelector(".btn-primary-custom") as HTMLButtonElement;
+    const btnSubmit = document.querySelector("#formLogin .btn-primary-custom") as HTMLButtonElement;
     btnSubmit.disabled = true;
 
     const newErrors: string[] = [];
@@ -50,10 +54,12 @@ const Login = () => {
     .then(response => response.json())
     .then(data => {
       if (data.error) throw new Error()
-
-      const { accessToken, expirationTime } = data.userCredential.user.stsTokenManager;
+        
+      const { username, userCredential, message } = data
+      const { accessToken, expirationTime } = userCredential.user.stsTokenManager;
       addCookies(accessToken, expirationTime)
-      setMessage(data.message)
+      addUsername(username)
+      setMessage(message)
       setError(false)
       setTimeout(() => navigate("/"), 2000);
     })
@@ -84,7 +90,7 @@ const Login = () => {
         <div>
           <h1>Acesse sua conta</h1>
 
-          <form onSubmit={handleLogin}>
+          <form id="formLogin" onSubmit={handleLogin}>
             <InputField
               label="Digite seu e-mail" 
               name="mail"
