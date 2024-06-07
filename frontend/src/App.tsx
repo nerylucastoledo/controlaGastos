@@ -12,10 +12,16 @@ import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import NotFound from "./pages/NotFound/NotFound";
 import Settings from "./pages/Settings/Settings";
 import ProtectedRoute from "./utils/PrivateRoute";
+import NewPeople from "./components/NewPeople/NewPeople";
+import NewCategory from "./components/NewCategory/NewCategory";
+import NewCard from "./components/NewCard/NewCard";
 
 function App() {
   return (
     <BrowserRouter>
+      <NewPeople />
+      <NewCard />
+      <NewCategory />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
