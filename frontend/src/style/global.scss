@@ -117,6 +117,54 @@ input, select {
   }
 }
 
+// Modal
+.modal {
+  &-dialog, &-content {
+    max-width: 432px;
+  }
+
+  &-content {
+    margin: 8px;
+  }
+
+  &-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: unset;
+
+    h1 {
+      margin: 24px 0 0;
+    }
+
+    button {
+      background-color: transparent;
+      border: unset;
+      margin-top: -24px;
+    }
+  }
+
+  &-body {
+    padding: 0 16px 24px;
+
+    form {
+      border: unset;
+      padding: unset;
+      box-shadow: unset;
+      min-width: unset;
+
+      label {
+        max-width: max-content;
+      }
+
+      button {
+        margin: unset;
+      }
+    }
+  }
+}
+
+
 @media (min-width: 988px) {
   form {
     padding: 32px 16px;

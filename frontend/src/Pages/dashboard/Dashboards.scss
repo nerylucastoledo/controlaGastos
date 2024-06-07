@@ -1,5 +1,4 @@
 .dashboard {
-
   &__container {
     padding: 0 16px;
 
@@ -19,7 +18,12 @@
       gap: 16px;
 
       div {
-        flex-grow: 1;
+        width: 50%;
+
+        select {
+          width: 100%;
+          max-width: 100%;
+        }
       }
     }
   }
