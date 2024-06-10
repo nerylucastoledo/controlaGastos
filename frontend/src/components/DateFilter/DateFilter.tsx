@@ -11,7 +11,7 @@ export const DateFilter = ({ setMonth, setYear }: IProps) => {
   const { currentMonth, currentYear, months, years } = monthsAndYears()
 
   return (
-    <div className="dashboard__container-select">
+    <div className="dashboard__container-content-select">
       <SelectField 
         label="Selecione o mês" 
         name="month"
