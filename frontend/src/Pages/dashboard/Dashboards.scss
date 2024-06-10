@@ -1,5 +1,5 @@
 .dashboard {
-  &__container {
+  &__container-content {
     padding: 0 16px;
 
     &-info {
@@ -23,6 +23,39 @@
         select {
           width: 100%;
           max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 988px) {
+  .dashboard {
+    display: flex;
+    
+    &__container {
+      max-width: 1280px;
+      width: 100%;
+
+      &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px 32px;
+        flex-wrap: wrap;
+
+        &-info {
+          min-width: max-content;
+        }
+
+        &-select {
+          flex-grow: 1;
+          max-width: 600px;
+          min-width: 600px;
+
+          .select-group {
+            margin-top: 0;
+          }
         }
       }
     }
