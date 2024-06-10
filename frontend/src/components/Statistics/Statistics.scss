@@ -1,0 +1,57 @@
+.statistics {
+  h1 {
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  .chart {
+    background-color: #FFF7F7;
+    border-radius: 8px;
+  }
+
+  .ranking {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    
+    div {
+      flex-grow: 1;
+      border: 1px solid #F1F1F1;
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      color: #595959;
+      position: relative;
+  
+      .ranking-title {
+        margin-bottom: 8px;
+        font-size: 12px;
+      }
+  
+      .ranking-value {
+        font-weight: bold;
+        font-size: 12px;
+      }
+  
+      &:first-child {
+        background-color: #FFF7F7;
+      }
+  
+      &:nth-child(2) {
+        background-color: #EDF8F7;
+      }
+  
+      &:last-child {
+        background-color: #EEE8F1;
+      }
+  
+      svg {
+        position: absolute;
+        top: 0;
+        right: 4px;
+      }
+      
+    }
+  }
+}
