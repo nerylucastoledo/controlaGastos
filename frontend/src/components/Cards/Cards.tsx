@@ -2,6 +2,10 @@ import { RiVisaLine } from "react-icons/ri";
 
 import "./Cards.scss"
 
+import Invoice from "./Invoice/Invoice";
+import Edit from "../Edit/Edit";
+import Delete from "../Delete/Delete";
+
 interface Card {
   name: string,
   color: string,
@@ -26,25 +30,32 @@ const Cards = () => {
       value: "R$ 689,97"
     },
   ]
+  
   return (
-    <div className="cards">
-      <h1>cartões</h1>
+    <>
+      <Invoice />
+      <div className="cards">
+        <h1>cartões</h1>
 
-      <div className="cards__container">
-        {mock && mock.length && mock.map((card) => (
-          <div className="cards__container-content" style={{ backgroundColor: `${card.color}`}}>
-            <div>
-              <p className="cards__container-content__payable">{card.value}</p>
-              <RiVisaLine size={36}/>
+        <div className="cards__container">
+          {mock && mock.length && mock.map((card, index) => (
+            <div key={`${card.name}-${index}`} className="cards__container-content" style={{ backgroundColor: `${card.color}`}}>
+              <div>
+                <p className="cards__container-content__payable">{card.value}</p>
+                <RiVisaLine size={36}/>
+              </div>
+              <div>
+                <p>{card.name}</p>
+                <p>**** **** **** ****</p>
+              </div>
             </div>
-            <div>
-              <p>{card.name}</p>
-              <p>**** **** **** ****</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+      
+      <Edit />
+      <Delete />
+    </>
   )
 }
 
