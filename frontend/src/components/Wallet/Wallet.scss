@@ -1,0 +1,71 @@
+.wallet {
+  h1 {
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  &-content {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 16px;
+    color: #595959;
+    border-radius: 8px;
+
+    &__balance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #F1F1F1;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+
+      div {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        span:first-child {
+          background-color: #fff;
+          padding: 4px;
+          border-radius: 50%;
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+      }
+
+      p {
+        font-weight: bold;
+        color: #006400;
+      }
+    }
+
+    &__accounts {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+
+      &-salary p:last-child {
+        font-weight: bold;
+        color: #006400;
+      }
+
+      &-divisor {
+        width: 1px;
+        height: 40px;
+        background-color: #F1F1F1;
+      }
+
+      &-payable p:last-child {
+        font-weight: bold;
+        color: #B22222;
+      }
+    }
+  }
+}
