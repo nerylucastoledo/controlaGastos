@@ -1,0 +1,48 @@
+.cards {
+  overflow: hidden;
+  margin-right: -16px;
+  
+  h1 {
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+  
+  &__container {
+    display: flex;
+    gap: 16px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+      scrollbar-width: none;
+    }
+
+    &-content {
+      padding: 16px;
+      border-radius: 12px;
+      color: #fff;
+      justify-content: space-between;
+      min-width: 290px;
+
+      &:last-child {
+        margin-right: 16px;
+      }
+      
+      div {
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:last-child) {
+          margin-bottom: 24px;
+        }
+      }
+
+      &__payable {
+        font-weight: bold;
+      }
+    }
+  }
+}
