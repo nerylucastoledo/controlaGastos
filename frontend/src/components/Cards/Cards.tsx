@@ -2,50 +2,68 @@ import { RiVisaLine } from "react-icons/ri";
 
 import "./Cards.scss"
 
-import Invoice from "./Invoice/Invoice";
 import Edit from "../Edit/Edit";
 import Delete from "../Delete/Delete";
+import { Bill, Card, ICard } from "../../types";
+import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
+import { useNavigate } from "react-router-dom";
 
-interface Card {
-  name: string,
-  color: string,
-  value: string
+interface IInvoice extends ICard {
+  total: number;
 }
 
-const Cards = () => {
-  const mock: Card[] = [
-    {
-      name: "Nubank",
-      color: "#8E2C91",
-      value: "R$ 3.568,90"
-    },
-    {
-      name: "Samsung",
-      color: "#000000",
-      value: "R$ 2.899,97"
-    },
-    {
-      name: "Picpay",
-      color: "green",
-      value: "R$ 689,97"
-    },
-  ]
-  
+const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
+  const navigate = useNavigate()
+
+  const getCardsOfMonth = () => {
+    const cardsSet: Set<string> = new Set()
+    bill.forEach((item) => cardsSet.add(item.card))
+    return cardsSet
+  }
+
+  const generateInvoice = () => {
+    const cardsOfMonth = Array.from(getCardsOfMonth())
+    const invoices: IInvoice[] = []
+
+    cardsOfMonth.forEach((name) => {
+      const total = bill
+        .filter((item) => item.card === name)
+        .reduce((acc, item) => acc + formatCurrencyToNumber(item.value), 0)
+
+      const { color } = cards.filter(card => card.name === name)[0]
+      
+      invoices.push({
+        color,
+        name,
+        total
+      })
+    })
+
+    return invoices;
+  }
+
+  const invoices = generateInvoice()
+
   return (
     <>
-      <Invoice />
       <div className="cards">
         <h1>cartões</h1>
 
         <div className="cards__container">
-          {mock && mock.length && mock.map((card, index) => (
-            <div key={`${card.name}-${index}`} className="cards__container-content" style={{ backgroundColor: `${card.color}`}}>
+          {invoices.length && invoices.map(({ color, name, total}, index) => (
+            <div 
+              key={`${name}-${index}`} 
+              className="cards__container-content" 
+              style={{ backgroundColor: `${color}`}}
+              onClick={() => navigate(`/invoice/${name}`)}
+            >
               <div>
-                <p className="cards__container-content__payable">{card.value}</p>
-                <RiVisaLine size={36}/>
+                <p className="cards__container-content__payable">{parseMoney(total)}</p>
+                <RiVisaLine size={36} color="#fff" />
               </div>
+
               <div>
-                <p>{card.name}</p>
+                <p>{name}</p>
                 <p>**** **** **** ****</p>
               </div>
             </div>

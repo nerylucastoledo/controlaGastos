@@ -1,6 +1,9 @@
-export interface Card {
+export interface ICard {
   name: string;
-  color: string
+  color: string;
+}
+
+export interface Card extends ICard {
   username: string;
 }
 

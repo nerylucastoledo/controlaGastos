@@ -1,11 +1,11 @@
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Bill } from "../../types";
-import { formatCurrency, formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
+import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
 import "./Wallet.scss"
 
 import { FaWallet } from "react-icons/fa";
 
-const Wallet = ({ bill }: { bill: Bill[] } ) => {
+const Wallet = ({ bill }: { bill: Bill[] }) => {
   const [salary] = useLocalStorage("salary", "")
 
   const valueToPay = bill.reduce((acc, item) => {
