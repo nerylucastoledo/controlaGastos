@@ -20,31 +20,31 @@ import { DataContextProvider } from "./context/Data";
 function App() {
   return (
     <BrowserRouter>
-    <DataContextProvider>
       <NewPeople />
       <NewCard />
       <NewCategory />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/*" element={<NotFound />} />
-        <Route path="/" element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        } />
-        <Route path="/report" element={
-          <ProtectedRoute>
-            <Report />
-          </ProtectedRoute>
-        } />
-        <Route path="/config" element={
-          <ProtectedRoute>
-            <Settings />
-          </ProtectedRoute>
-        } />
-      </Routes>
-    </DataContextProvider>
+      <DataContextProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/*" element={<NotFound />} />
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/report" element={
+            <ProtectedRoute>
+              <Report />
+            </ProtectedRoute>
+          } />
+          <Route path="/config" element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          } />
+        </Routes>
+      </DataContextProvider>
     </BrowserRouter>
   );
 }
