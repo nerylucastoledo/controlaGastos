@@ -15,10 +15,12 @@ import ProtectedRoute from "./utils/PrivateRoute";
 import NewPeople from "./components/NewPeople/NewPeople";
 import NewCategory from "./components/NewCategory/NewCategory";
 import NewCard from "./components/NewCard/NewCard";
+import { DataContextProvider } from "./context/Data";
 
 function App() {
   return (
     <BrowserRouter>
+    <DataContextProvider>
       <NewPeople />
       <NewCard />
       <NewCategory />
@@ -42,6 +44,7 @@ function App() {
           </ProtectedRoute>
         } />
       </Routes>
+    </DataContextProvider>
     </BrowserRouter>
   );
 }

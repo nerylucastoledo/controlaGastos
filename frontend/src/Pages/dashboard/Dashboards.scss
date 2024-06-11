@@ -11,6 +11,26 @@
       p {
         color: #595959;
       }
+
+      .data-empty {
+        margin-top: 48px;
+
+        h2 {
+          text-align: center;
+          margin: 16px 0 8px;
+          font-weight: bold;
+          color: #FFA8A8;
+        }
+
+        p {
+          text-align: center;
+        }
+
+        svg {
+          display: block;
+          margin: 24px auto 16px;
+        }
+      }
     }
 
     &-select {
