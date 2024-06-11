@@ -5,10 +5,12 @@ import { monthsAndYears } from "../../utils/Date"
 interface IProps {
   setMonth: React.Dispatch<React.SetStateAction<string>>;
   setYear: React.Dispatch<React.SetStateAction<string>>;
+  currentMonth: string;
+  currentYear: string;
 }
 
-export const DateFilter = ({ setMonth, setYear }: IProps) => {
-  const { currentMonth, currentYear, months, years } = monthsAndYears()
+export const DateFilter = ({ setMonth, setYear, currentMonth, currentYear }: IProps) => {
+  const { months, years } = monthsAndYears()
 
   return (
     <div className="dashboard__container-content-select">
