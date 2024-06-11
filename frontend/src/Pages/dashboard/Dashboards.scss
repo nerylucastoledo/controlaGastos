@@ -43,6 +43,7 @@
         align-items: flex-end;
         gap: 24px 32px;
         flex-wrap: wrap;
+        padding-left: 64px;
 
         &-info {
           min-width: max-content;
@@ -56,6 +57,14 @@
           .select-group {
             margin-top: 0;
           }
+        }
+
+        .bill {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 0 16px;
         }
       }
     }

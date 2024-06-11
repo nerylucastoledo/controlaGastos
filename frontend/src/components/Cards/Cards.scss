@@ -46,3 +46,22 @@
     }
   }
 }
+
+@media (min-width: 988px) {
+  .cards {
+    margin-right: 0;
+    width: 100%;
+
+    &__container {
+      flex-wrap: wrap;
+
+      &-content {
+        flex-grow: 1;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

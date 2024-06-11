@@ -1,0 +1,29 @@
+.chart {
+  h1 {
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__container {
+    position: relative;
+
+    canvas {
+      background-color: #FFF7F7;
+      border-radius: 8px;
+      max-height: 280px;
+    }
+  }
+}
+
+@media (min-width: 988px) {
+  .chart {
+    &__container {
+
+      canvas {
+        width: 520px;
+      }
+    }
+  }
+  
+}

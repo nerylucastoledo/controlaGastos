@@ -7,6 +7,7 @@ import Statistics from "../../components/Statistics/Statistics"
 import Wallet from "../../components/Wallet/Wallet"
 import Cards from "../../components/Cards/Cards"
 import RecentExpenses from "../../components/RecentExpenses/RecentExpenses"
+import Chart from "../../components/Statistics/Chart/Chart"
 
 const Dashboard = () => {
   const [month, setMonth] = useState("")
@@ -23,7 +24,8 @@ const Dashboard = () => {
           </div>
 
           <DateFilter setMonth={setMonth} setYear={setYear} />
-          <div>
+          <div className="bill">
+            <Chart />
             <Statistics />
             <Wallet />
           </div>

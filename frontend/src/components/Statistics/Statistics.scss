@@ -1,15 +1,4 @@
 .statistics {
-  h1 {
-    text-align: left;
-    margin-top: 24px;
-    margin-bottom: 16px;
-  }
-
-  .chart {
-    background-color: #FFF7F7;
-    border-radius: 8px;
-  }
-
   .ranking {
     display: flex;
     gap: 8px;
@@ -53,5 +42,13 @@
       }
       
     }
+  }
+}
+
+@media (min-width: 988px) {
+  .statistics {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
   }
 }

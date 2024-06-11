@@ -7,8 +7,6 @@ import { FaMedal } from "react-icons/fa";
 const Statistics = () => {
   return (
     <div className="statistics">
-      <h1>estatísticas</h1>
-      <Chart />
       <div className="ranking">
         <div>
           <FaMedal color="#ffd700"/>

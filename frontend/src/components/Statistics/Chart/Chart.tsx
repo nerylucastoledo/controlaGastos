@@ -9,6 +9,8 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
+import "./Chart.scss"
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -27,19 +29,19 @@ const Chart = () => {
       },
       title: {
         display: true,
-        text: 'Chart.js Bar Chart',
+        text: 'Gasto por mês',
       },
     },
   };
   
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  const labels = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
   
   const data = {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: [7, 4, 5, 1, 2, 3, 6],
+        label: 'Valor',
+        data: [2458.90, 3458.97, 3289.97, 2899.99, 3459.76, 3378.78, 3578.78, 3178.78, 3678.78, 3478.78, 3278.78, 3878.78],
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
@@ -47,7 +49,10 @@ const Chart = () => {
 
   return (
     <div className='chart'>
-      <Bar options={options} data={data} />
+      <h1>estatísticas</h1>
+      <div className='chart__container'>
+        <Bar options={options} data={data} />
+      </div>
     </div>
   )
 }

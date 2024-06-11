@@ -46,10 +46,10 @@
 
     &__accounts {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       text-align: center;
-      gap: 4px;
+      gap: 32px;
 
       &-salary p:last-child {
         font-weight: bold;
@@ -67,5 +67,12 @@
         color: #B22222;
       }
     }
+  }
+}
+
+@media (min-width: 988px) {
+  .wallet {
+    flex-grow: 1;
+    min-width: 346px;
   }
 }
