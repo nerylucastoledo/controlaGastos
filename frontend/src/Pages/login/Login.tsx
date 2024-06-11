@@ -20,8 +20,9 @@ const Login = () => {
     document.cookie = `expires=${expires.toUTCString()};`;
   }
 
-  const addUsername = (username: string) => {
+  const addUserDate = (username: string, salary: string) => {
     window.localStorage.setItem('username', username)
+    window.localStorage.setItem('salary', salary)
   }
 
   const handleLogin = (e: FormEvent) => {
@@ -55,10 +56,10 @@ const Login = () => {
     .then(data => {
       if (data.error) throw new Error()
         
-      const { username, userCredential, message } = data
+      const { username, salary, userCredential, message } = data
       const { accessToken, expirationTime } = userCredential.user.stsTokenManager;
       addCookies(accessToken, expirationTime)
-      addUsername(username)
+      addUserDate(username, salary)
       setMessage(message)
       setError(false)
       setTimeout(() => navigate("/"), 2000);
