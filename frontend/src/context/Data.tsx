@@ -3,9 +3,10 @@ import { createContext, useContext, useState } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 import { monthsAndYears } from "../utils/Date"
 import { useFecth } from "../hooks/useFetch"
+import { IData } from "../types";
 
 interface DataContextType {
-  data: any;
+  data: IData | null;
   loading: boolean;
   error: string | null;
   month: string;
@@ -33,8 +34,8 @@ export const DataContextProvider = ({ children }:  React.PropsWithChildren) => {
   const [month, setMonth] = useState(currentMonth)
   const [year, setYear] = useState(currentYear)
 
-  const { data, loading, error, setUpdate } = useFecth<any>(
-    `${process.env.VITE_DEFAULT_URL}/bill?username=${username}`
+  const { data, loading, error, setUpdate } = useFecth<DataContextType>(
+    `${process.env.VITE_DEFAULT_URL}/bill?username=${username}&date=${month+year}`
   )
 
   return <DataContext.Provider 
@@ -43,8 +44,8 @@ export const DataContextProvider = ({ children }:  React.PropsWithChildren) => {
       loading, 
       error, 
       month, 
-      setMonth, 
       year, 
+      setMonth, 
       setYear,
       setUpdate
     }}

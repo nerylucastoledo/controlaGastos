@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "./Dashboards.scss"
 
 import { ImCool } from "react-icons/im";
@@ -12,11 +14,10 @@ import Cards from "../../components/Cards/Cards"
 import RecentExpenses from "../../components/RecentExpenses/RecentExpenses"
 import Chart from "../../components/Statistics/Chart/Chart"
 import Loading from "../../components/Loadig/Loading";
-import { useState } from "react";
 import Toast from "../../components/Toast/Toast";
 
 const Dashboard = () => {
-  const { data, loading, error, setUpdate, setMonth, setYear, month, year } = useData()
+  const { data, loading, error, setMonth, setYear, month, year } = useData()
   const [closeError, setCloseError] = useState(false)
 
   const closeToast = () => {
@@ -27,26 +28,32 @@ const Dashboard = () => {
     <div className="dashboard">
       <Header />
 
-      {loading && <Loading />}
-
-      {error && !closeError && <Toast error={true} message="Não foi possível buscar os dados! Reinicie o app" hideToast={closeToast}/>}
+      {error && !closeError && <Toast error={true} message="Não foi possível buscar os dados! Filtre novamente" hideToast={closeToast}/>}
       
       <div className="dashboard__container">
         <div className="dashboard__container-content">
           <div className="dashboard__container-content-info">
+            <h1>Olá, <strong>Lucas</strong></h1>
+            <p>Gerencie seus gastos de forma simples e eficiente.</p>
+
+            <DateFilter 
+              setMonth={setMonth} 
+              setYear={setYear} 
+              currentMonth={month} 
+              currentYear={year} 
+            />
+
+            {loading && <Loading />}
+    
             {!loading && (
               <>
-                <h1>Olá, <strong>Lucas</strong></h1>
-                <p>Gerencie seus gastos de forma simples e eficiente.</p>
-    
-                <DateFilter setMonth={setMonth} setYear={setYear} />
-    
-                {!loading && !error && data && data.length ? (  
+              {loading}
+                {!error && data && data.billList.length ? (  
                   <>
                     <div className="bill">
                       <Chart />
                       <Statistics />
-                      <Wallet />
+                      <Wallet bill={data.billList} />
                     </div>
           
                     <Cards />

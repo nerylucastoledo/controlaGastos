@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { IData } from '../types'
 
 export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
-  const [data, setData] = useState<T | null>(null)
+  const [data, setData] = useState<IData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [update, setUpdate] = useState(false)
@@ -12,7 +13,7 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
   useEffect(() => {
     const controller = new AbortController()
     const { signal } = controller
-    
+
     const fetchData = async () => {
       setLoading(true)
       setError(null)
@@ -32,7 +33,6 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
         const data = (await response.json()) as T
 
         if (!signal.aborted) {
-          setError("Deu erro")
           setData(data)
         }
       } catch (error) {
