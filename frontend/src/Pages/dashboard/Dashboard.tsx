@@ -47,7 +47,6 @@ const Dashboard = () => {
     
             {!loading && (
               <>
-              {loading}
                 {!error && data && data.billList.length ? (  
                   <>
                     <div className="bill">

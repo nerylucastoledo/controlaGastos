@@ -16,6 +16,7 @@ import NewPeople from "./components/NewPeople/NewPeople";
 import NewCategory from "./components/NewCategory/NewCategory";
 import NewCard from "./components/NewCard/NewCard";
 import { DataContextProvider } from "./context/Data";
+import Invoice from "./pages/Invoice/Invoice";
 
 function App() {
   return (
@@ -33,6 +34,11 @@ function App() {
               <Dashboard />
             </ProtectedRoute>
           } />
+          <Route path="/invoice/:name_card" element={
+            <ProtectedRoute>
+              <Invoice />
+            </ProtectedRoute>
+          }/>
           <Route path="/report" element={
             <ProtectedRoute>
               <Report />

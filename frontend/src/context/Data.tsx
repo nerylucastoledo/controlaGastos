@@ -5,7 +5,7 @@ import { monthsAndYears } from "../utils/Date"
 import { useFecth } from "../hooks/useFetch"
 import { IData } from "../types";
 
-interface DataContextType {
+export interface DataContextType {
   data: IData | null;
   loading: boolean;
   error: string | null;
@@ -34,7 +34,7 @@ export const DataContextProvider = ({ children }:  React.PropsWithChildren) => {
   const [month, setMonth] = useState(currentMonth)
   const [year, setYear] = useState(currentYear)
 
-  const { data, loading, error, setUpdate } = useFecth<DataContextType>(
+  const { data, loading, error, setUpdate } = useFecth(
     `${process.env.VITE_DEFAULT_URL}/bill?username=${username}&date=${month+year}`
   )
 

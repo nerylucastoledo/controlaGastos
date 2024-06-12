@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { IData } from '../types'
 
-export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
+export function useFecth(url: RequestInfo, config?: RequestInit) {
   const [data, setData] = useState<IData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -30,7 +30,7 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
           throw new Error(`Error: ${response.status}`)
         }
         
-        const data = (await response.json()) as T
+        const data = (await response.json()) as IData
 
         if (!signal.aborted) {
           setData(data)

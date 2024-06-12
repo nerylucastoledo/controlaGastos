@@ -23,7 +23,8 @@ export interface Bill {
   card: string;
   value: string;
   category: string;
-  date: string
+  date: string;
+  item: string;
 }
 
 export interface IData {

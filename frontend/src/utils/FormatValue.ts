@@ -6,7 +6,7 @@ export const formatCurrency = (value: string) => {
   return "R$ " + value;
 }
 
-export const parseMoney = (value: number) => {
+export const parseMoney = (value: number | string) => {
   return value.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL'

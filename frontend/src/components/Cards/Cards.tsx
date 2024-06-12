@@ -2,8 +2,6 @@ import { RiVisaLine } from "react-icons/ri";
 
 import "./Cards.scss"
 
-import Edit from "../Edit/Edit";
-import Delete from "../Delete/Delete";
 import { Bill, Card, ICard } from "../../types";
 import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
 import { useNavigate } from "react-router-dom";
@@ -44,36 +42,38 @@ const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
 
   const invoices = generateInvoice()
 
+  const handlecard = (name: string) => {
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+      navigate(`/invoice/${name}`)
+    }, 200);
+  }
+
   return (
-    <>
-      <div className="cards">
-        <h1>cartões</h1>
+    <div className="cards">
+      <h1>cartões</h1>
 
-        <div className="cards__container">
-          {invoices.length && invoices.map(({ color, name, total}, index) => (
-            <div 
-              key={`${name}-${index}`} 
-              className="cards__container-content" 
-              style={{ backgroundColor: `${color}`}}
-              onClick={() => navigate(`/invoice/${name}`)}
-            >
-              <div>
-                <p className="cards__container-content__payable">{parseMoney(total)}</p>
-                <RiVisaLine size={36} color="#fff" />
-              </div>
-
-              <div>
-                <p>{name}</p>
-                <p>**** **** **** ****</p>
-              </div>
+      <div className="cards__container">
+        {invoices.length && invoices.map(({ color, name, total}, index) => (
+          <button 
+            key={`${name}-${index}`} 
+            className="cards__container-content" 
+            style={{ backgroundColor: `${color}`}}
+            onClick={() => handlecard(name)}
+          >
+            <div>
+              <p className="cards__container-content__payable">{parseMoney(total)}</p>
+              <RiVisaLine size={36} color="#fff" />
             </div>
-          ))}
-        </div>
+
+            <div>
+              <p>{name}</p>
+              <p>**** **** **** ****</p>
+            </div>
+          </button>
+        ))}
       </div>
-      
-      <Edit />
-      <Delete />
-    </>
+    </div>
   )
 }
 
