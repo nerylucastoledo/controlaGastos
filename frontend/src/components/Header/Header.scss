@@ -5,6 +5,11 @@
   padding: 16px;
   border-bottom: 1px solid #F1F1F1;
 
+  &__logo {
+    background-color: transparent;
+    border: unset;
+  }
+
   .header-desktop {
     display: none;
   }

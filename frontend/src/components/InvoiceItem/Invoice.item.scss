@@ -1,5 +1,6 @@
 .invoice__item {
   flex-grow: 1;
+  z-index: 1000;
 
   &__container {
     background-color: #f1f1f1;

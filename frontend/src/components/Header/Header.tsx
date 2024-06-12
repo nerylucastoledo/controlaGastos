@@ -6,12 +6,17 @@ import { RiMenu2Fill } from 'react-icons/ri';
 import { IoMdClose } from "react-icons/io";
 import { IoIosLogOut } from "react-icons/io";
 import Menu from "./menu/Menu";
+import { useNavigate } from "react-router-dom";
 
 
 export const Header = () => {
+  const navigate = useNavigate()
+
   return (
     <header className="header">
-      <a href="/"><img src={Logo} alt="logo_prinicpal" /></a>
+      <button className="header__logo" onClick={() => navigate("/")}>
+        <img src={Logo} alt="logo_prinicpal" />
+      </button>
       
       <div className="header-mobile">
         <button id="closeMenu" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile" aria-controls="menuMobile" aria-label="Menu de celular">
