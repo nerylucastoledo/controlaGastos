@@ -56,7 +56,7 @@ const Dashboard = () => {
                     </div>
           
                     <Cards cards={data.cardList} bill={data.billList} />
-                    <RecentExpenses />
+                    <RecentExpenses bill={data.billList} />
                   </>
                 ) : (
                   <div className="data-empty">
