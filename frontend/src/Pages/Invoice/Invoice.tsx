@@ -19,21 +19,26 @@ import Toast from "../../components/Toast/Toast";
 const Invoice = () => {
   const navigate = useNavigate()
   const { name_card } = useParams()
-
-  const { data, loading, error } = useData()
+  const { data, loading, error, setUpdate } = useData()
 
   const [dataFilter, setDataFilter] = useState<Bill[]>([])
   const [peopleSelected, setPeopleSelected] = useState('Eu')
   const [peoples, setPeoples] = useState<string[]>([])
   const [colorCard, setColorCard] = useState("")
+  const [editItem, setEditItem] = useState<Bill | null>(null)
+  const [deleteItem, setDeleteItem] = useState<Bill | null>(null)
 
   useEffect(() => {
     if (data?.billList) {
+      const { color } = data.cardList.filter(card => card.name === name_card)[0]
       const filteredData = data.billList.filter(item => item.card === name_card);
-      const uniquePeoples = [...new Set(filteredData.filter(item => item.people !== "Eu").map(item => item.people))];
-      const cardColor = data.cardList.filter(card => card.name === name_card)[0].color
+      const uniquePeoples = [...new Set(
+        filteredData
+        .filter(item => item.people !== "Eu")
+        .map(item => item.people)
+      )];
       
-      setColorCard(cardColor)
+      setColorCard(color)
       setDataFilter(filteredData);
       setPeoples(uniquePeoples);
     }
@@ -44,17 +49,15 @@ const Invoice = () => {
   return (
     <div>
       <Header />
-
       <div className="invoice">
         <button className="invoice__back" onClick={handleBack}><IoArrowBack /> Voltar</button>
 
         {error && (
           <>
-          <Toast error={true} message="Não foi possível buscar os dados!" hideToast={handleBack} />
+            <Toast error={true} message="Não foi possível buscar os dados!" hideToast={handleBack} />
 
             <p className="invoice__error">
-              Ocorreu um erro!
-              <span>tente novamente mais tarde</span>
+              Ocorreu um erro! <span>tente novamente mais tarde</span>
             </p>
           </>
         )}
@@ -72,13 +75,19 @@ const Invoice = () => {
                 setPeopleSelected={setPeopleSelected}
               />
 
-              <InvoiceItem data={dataFilter} peopleSelected={peopleSelected} />
+              <InvoiceItem 
+                data={dataFilter} 
+                peopleSelected={peopleSelected}
+                setEditItem={setEditItem}
+                setDeleteItem={setDeleteItem}
+              />
             </div>
           </div>
         )}
       </div>
-      <Edit />
-      <Delete />
+
+      <Edit item={editItem} setUpdate={setUpdate} />
+      <Delete item={deleteItem} setUpdate={setUpdate}  />
     </div>
   )
 }

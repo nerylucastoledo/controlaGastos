@@ -18,6 +18,7 @@ export interface People {
 }
 
 export interface Bill {
+  _id: string;
   username: string;
   people: string;
   card: string;
@@ -28,6 +29,7 @@ export interface Bill {
 }
 
 export interface IData {
+  _id: string;
   salary: string;
   billList: Bill[];
   cardList: Card[];
