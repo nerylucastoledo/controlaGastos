@@ -6,8 +6,6 @@ import { Bill } from "../../types";
 const RecentExpenses = ({ bill }: { bill: Bill[] }) => {
   const lastExpenses = bill.reverse().slice(0, 9)
 
-  console.log(lastExpenses)
-
   return (
     <div className="recent-expenses">
       <h1>últimos gastos</h1>

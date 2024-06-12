@@ -51,7 +51,7 @@ const Dashboard = () => {
                   <>
                     <div className="bill">
                       <Chart />
-                      <Statistics />
+                      <Statistics bill={data.billList} />
                       <Wallet bill={data.billList} />
                     </div>
           

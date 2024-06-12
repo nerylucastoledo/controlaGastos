@@ -25,14 +25,26 @@
   
       &:first-child {
         background-color: #FFF7F7;
+
+        svg {
+          fill: #ffd700;
+        }
       }
   
       &:nth-child(2) {
         background-color: #EDF8F7;
+
+        svg {
+          fill: #c0c0c0;
+        }
       }
   
       &:last-child {
         background-color: #EEE8F1;
+
+        svg {
+          fill: #cd7f32;
+        }
       }
   
       svg {
@@ -40,7 +52,6 @@
         top: 0;
         right: 4px;
       }
-      
     }
   }
 }
