@@ -1,7 +1,7 @@
-import { IoIosAirplane } from "react-icons/io";
 
 import "./RecentExpenses.scss"
 import { Bill } from "../../types";
+import Icon from "../../utils/Icon";
 
 const RecentExpenses = ({ bill }: { bill: Bill[] }) => {
   const lastExpenses = bill.reverse().slice(0, 9)
@@ -15,7 +15,7 @@ const RecentExpenses = ({ bill }: { bill: Bill[] }) => {
           {lastExpenses?.length && lastExpenses.map((expense, index) => (
             <div key={`${expense.item}-${index}`} className="recent-expenses__container-item">
               <div className="recent-expenses__container-item__info">
-                <span><IoIosAirplane /></span>
+                <span><Icon name={expense.category} /></span>
                 <div>
                   <p>{expense.item}</p>
                   <p>{expense.people}</p>
