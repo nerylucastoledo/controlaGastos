@@ -18,6 +18,12 @@
       scrollbar-width: none;
     }
 
+    &:has(:not(.cards__container-content:nth-child(2))) {
+      .cards__container-content:first-child {
+        max-width: 50%;
+      }
+    } 
+
     &-content {
       padding: 16px;
       border-radius: 12px;
