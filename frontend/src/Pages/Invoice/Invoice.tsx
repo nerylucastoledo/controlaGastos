@@ -15,6 +15,7 @@ import { Bill } from "../../types";
 
 import { IoArrowBack } from "react-icons/io5";
 import Toast from "../../components/Toast/Toast";
+import { Helmet } from 'react-helmet';
 
 const Invoice = () => {
   const navigate = useNavigate()
@@ -47,16 +48,21 @@ const Invoice = () => {
   const handleBack = () => navigate("/")
 
   return (
-    <div>
+    <div className="invoice">
+      <Helmet>
+        <title>controlaGastos - Fatura {name_card}</title>
+        <meta name="description" content="Na tela de invoice do controla Gastos você consegue visualizar todos os gastos da sua fatura separado por pessoa" />
+      </Helmet>
+
       <Header />
-      <div className="invoice">
-        <button className="invoice__back" onClick={handleBack}><IoArrowBack /> Voltar</button>
+      <div className="invoice__container">
+        <button className="invoice__container__back" onClick={handleBack}><IoArrowBack /> Voltar</button>
 
         {error && (
           <>
             <Toast error={true} message="Não foi possível buscar os dados!" hideToast={handleBack} />
 
-            <p className="invoice__error">
+            <p className="invoice__container__error">
               Ocorreu um erro! <span>tente novamente mais tarde</span>
             </p>
           </>
@@ -65,10 +71,10 @@ const Invoice = () => {
         {!error && loading && <Loading /> }
 
         {!error && !loading && (
-          <div className="invoice__screen" style={{ backgroundColor: colorCard }}>
+          <div className="invoice__container__screen" style={{ backgroundColor: colorCard }}>
             <h2>{name_card}</h2>
 
-            <div className="invoice__container">
+            <div className="invoice__container__content">
               <InvoicePeople 
                 peoples={peoples} 
                 peopleSelected={peopleSelected}

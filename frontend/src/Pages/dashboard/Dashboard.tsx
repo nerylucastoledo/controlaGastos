@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./Dashboards.scss"
 
 import { ImCool } from "react-icons/im";
+import { Helmet } from 'react-helmet';
 
 import { useData } from "../../context/Data"
 
@@ -26,6 +27,13 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      <Helmet>
+        <title>controlaGastos - Tela inicial</title>
+        <meta 
+          name="description" 
+          content="Na tela inicial do controlaGastos você consegue visualizar o valor da fatura de cada cartão, o ranking de gasto por categoria e um gráfico da fatura por mês." />
+      </Helmet>
+
       <Header />
 
       {error && !closeError && <Toast error={true} message="Não foi possível buscar os dados! Filtre novamente" hideToast={closeToast}/>}

@@ -1,6 +1,8 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import { Helmet } from 'react-helmet';
+
 import HeaderLoggedOut from "../../components/HeaderLoggedOut/HeaderLoggedOut"
 import InputField from "../../components/InputField/InputField"
 import Toast from "../../components/Toast/Toast"
@@ -78,6 +80,13 @@ const Login = () => {
   
   return (
     <>
+      <Helmet>
+        <title>controlaGastos - Login</title>
+        <meta 
+          name="description" 
+          content="Entre no controlaGasto e tenha um maior controle dos seus gastos." />
+      </Helmet>
+      
       <HeaderLoggedOut />
 
       {message && <Toast message={message} error={error} hideToast={closeToast} />}

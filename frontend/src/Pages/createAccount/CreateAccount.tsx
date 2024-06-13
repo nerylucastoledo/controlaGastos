@@ -2,6 +2,8 @@ import { FormEvent, useState } from 'react'
 
 import "./CreateAccount.scss"
 
+import { Helmet } from 'react-helmet';
+
 import HeaderLoggedOut from '../../components/HeaderLoggedOut/HeaderLoggedOut'
 import InputField from '../../components/InputField/InputField'
 import { useNavigate } from 'react-router-dom'
@@ -76,6 +78,12 @@ const CreateAccount = () => {
   
   return (
     <>
+      <Helmet>
+        <title>controlaGastos - Criar conta</title>
+        <meta 
+          name="description" 
+          content="Cadastre-se no controlaGasto e tenha um maior controle dos seus gastos." />
+      </Helmet>
       <HeaderLoggedOut />
 
       {message && <Toast message={message} error={error} hideToast={closeToast} />}
