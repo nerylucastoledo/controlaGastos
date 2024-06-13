@@ -52,25 +52,21 @@
 @media (min-width: 988px) {
   .dashboard {
     display: flex;
+    min-height: 100vh;
     
     &__container {
       max-width: 1280px;
       width: 100%;
 
       &-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 24px 32px;
-        flex-wrap: wrap;
         padding-left: 64px;
+        width: 100%;
 
         &-select {
-          flex-grow: 1;
-          max-width: 600px;
-          min-width: 600px;
-
+          margin-top: 24px;
+          
           .select-group {
+            max-width: 600px;
             margin-top: 0;
           }
         }
