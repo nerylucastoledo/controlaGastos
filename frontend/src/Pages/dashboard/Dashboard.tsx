@@ -58,7 +58,7 @@ const Dashboard = () => {
                 {!error && data && data.billList.length ? (  
                   <>
                     <div className="bill">
-                      <Chart />
+                      <Chart year={year} />
                       <Statistics bill={data.billList} />
                       <Wallet bill={data.billList} />
                     </div>

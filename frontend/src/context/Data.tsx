@@ -34,7 +34,7 @@ export const DataContextProvider = ({ children }:  React.PropsWithChildren) => {
   const [month, setMonth] = useState(currentMonth)
   const [year, setYear] = useState(currentYear)
 
-  const { data, loading, error, setUpdate } = useFecth(
+  const { data, loading, error, setUpdate } = useFecth<IData>(
     `${process.env.VITE_DEFAULT_URL}/bill?username=${username}&date=${month+year}`
   )
 
