@@ -13,15 +13,24 @@ const NewPeople = () => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("")
 
+  const handleResetInput = () => {
+    setMessage("")
+    setName("")
+    setError(false)
+    setInputError(false)
+  }
+
   const closeToast = () => {
     setMessage("")
-    setError(false)
+    handleResetInput()
   }
 
   const handlePeople = (e: FormEvent) => {
     e.preventDefault()
+    setInputError(false)
 
     const btnSubmit = document.querySelector("#formNewPeople .btn-primary-custom") as HTMLButtonElement;
+    const btnClose = document.getElementById("closePeople") as HTMLButtonElement
     btnSubmit.disabled = true;
 
     if (!name) {
@@ -42,15 +51,16 @@ const NewPeople = () => {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.error) throw new Error()
+      if (data.error) throw new Error(data.error.message)
         
       const { message } = data
       setMessage(message)
-      setError(false)
       setName("")
+      setError(false)
       
       setTimeout(() => {
         btnSubmit.disabled = false;
+        btnClose.click()
         closeToast()
       }, 1000);
     })
@@ -68,7 +78,13 @@ const NewPeople = () => {
         <div className="modal-content">
           <div className="modal-header">
             <h1>Criar pessoa</h1>
-            <button type="button" data-bs-dismiss="modal" aria-label="Close">
+            <button 
+              type="button" 
+              data-bs-dismiss="modal" 
+              aria-label="Close" 
+              id="closePeople" 
+              onClick={(() => handleResetInput())}
+            >
               <IoMdClose size={28} color="#595959"/>
             </button>
           </div>

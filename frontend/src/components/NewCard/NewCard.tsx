@@ -10,34 +10,44 @@ const NewCard = () => {
   const [username] = useLocalStorage("username", "")
   const [name, setName] = useState("")
   const [color, setColor] = useState("")
-  const [errors, setErrors] = useState<string[]>([]);
+  const [inputErrors, setInputinputErrors] = useState<string[]>([]);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("")
 
+  const handleResetInput = () => {
+    setMessage("")
+    setName("")
+    setColor("")
+    setError(false)
+    setInputinputErrors([])
+  }
+
   const closeToast = () => {
     setMessage("")
-    setError(false)
+    handleResetInput()
   }
 
   const handleCard = (e: FormEvent) => {
     e.preventDefault()
+    setInputinputErrors([])
 
     const btnSubmit = document.querySelector("#formNewcard .btn-primary-custom") as HTMLButtonElement;
+    const btnClose = document.getElementById("closeCard") as HTMLButtonElement
     btnSubmit.disabled = true;
 
-    const newErrors: string[] = [];
+    const newinputErrors: string[] = [];
 
     if (!name) {
-      newErrors.push("name")
+      newinputErrors.push("name")
     }
 
     if (!color) {
-      newErrors.push("color")
+      newinputErrors.push("color")
     }
 
-    setErrors(newErrors);
+    setInputinputErrors(newinputErrors);
 
-    if (newErrors.length) {
+    if (newinputErrors.length) {
       btnSubmit.disabled = false;
       return
     }
@@ -55,17 +65,17 @@ const NewCard = () => {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.error) throw new Error()
+      if (data.error) throw new Error(data.error.message)
         
       const { message } = data
       setMessage(message)
-      setError(false)
-      setErrors([])
       setName("")
       setColor("")
+      setError(false)
       
       setTimeout(() => {
         btnSubmit.disabled = false;
+        btnClose.click()
         closeToast()
       }, 1000);
     })
@@ -73,17 +83,29 @@ const NewCard = () => {
       btnSubmit.disabled = false;
       setError(true)
       setMessage(error.message || "Não foi possível cadastrar!")
+
+      setTimeout(() => {
+        closeToast()
+      }, 1000);
     });
   }
 
   return (
     <div className="modal fade" id="newCard" tabIndex={-1} aria-labelledby="newCardLabel" aria-hidden="true">
       {message && <Toast message={message} error={error} hideToast={closeToast} />}
+
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
             <h1>Criar cartão</h1>
-            <button type="button" data-bs-dismiss="modal" aria-label="Close">
+            
+            <button 
+              type="button" 
+              data-bs-dismiss="modal" 
+              aria-label="Close" 
+              id="closeCard"
+              onClick={(() => handleResetInput())}
+            >
               <IoMdClose size={28} color="#595959"/>
             </button>
           </div>
@@ -96,7 +118,7 @@ const NewCard = () => {
                 placeholder="Nome do cartão"
                 value={name}
                 onChange={({ currentTarget }) => setName(currentTarget.value)}
-                errorMessage={errors.includes("name") ?  "Nome não pode ser vazio!" : ""}
+                errorMessage={inputErrors.includes("name") ?  "Nome não pode ser vazio!" : ""}
               />
 
               <InputField
@@ -107,8 +129,8 @@ const NewCard = () => {
                 value={color}
                 onChange={({ currentTarget }) => setColor(currentTarget.value)}
                 style={{ backgroundColor: color && `${color}`, borderRadius: "20px", height: "60px" }}
-                errorMessage={errors.includes("color") ?  "Cor não pode ser vazia!" : ""}
-                />
+                errorMessage={inputErrors.includes("color") ?  "Cor não pode ser vazia!" : ""}
+              />
 
               <button 
                 type="submit" 

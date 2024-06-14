@@ -13,15 +13,24 @@ const NewCategory = () => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("")
 
+  const handleResetInput = () => {
+    setMessage("")
+    setName("")
+    setError(false)
+    setInputError(false)
+  }
+
   const closeToast = () => {
     setMessage("")
-    setError(false)
+    handleResetInput()
   }
 
   const handleCategory = (e: FormEvent) => {
     e.preventDefault()
+    setInputError(false)
 
     const btnSubmit = document.querySelector("#formNewcategory .btn-primary-custom") as HTMLButtonElement;
+    const btnClose = document.getElementById("closeCategory") as HTMLButtonElement
     btnSubmit.disabled = true;
 
     if (!name) {
@@ -42,15 +51,16 @@ const NewCategory = () => {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.error) throw new Error()
+      if (data.error) throw new Error(data.error.message)
         
       const { message } = data
       setMessage(message)
-      setError(false)
       setName("")
+      setError(false)
       
       setTimeout(() => {
         btnSubmit.disabled = false;
+        btnClose.click()
         closeToast()
       }, 1000);
     })
@@ -58,17 +68,28 @@ const NewCategory = () => {
       btnSubmit.disabled = false;
       setError(true)
       setMessage(error.message || "Não foi possível cadastrar!")
+
+      setTimeout(() => {
+        closeToast()
+      }, 1000);
     });
   }
 
   return (
     <div className="modal fade" id="newCategory" tabIndex={-1} aria-labelledby="newCategoryLabel" aria-hidden="true">
       {message && <Toast message={message} error={error} hideToast={closeToast} />}
+      
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
             <h1>Criar categoria</h1>
-            <button type="button" data-bs-dismiss="modal" aria-label="Close">
+            <button 
+              type="button" 
+              data-bs-dismiss="modal" 
+              aria-label="Close" 
+              id="closeCategory"
+              onClick={(() => handleResetInput())}
+            >
               <IoMdClose size={28} color="#595959"/>
             </button>
           </div>
