@@ -27,7 +27,6 @@ ChartJS.register(
 );
 
 interface IProps {
-  month: string;
   year: string;
 }
 
@@ -41,7 +40,7 @@ const Chart = ({ year }: IProps) => {
   const [values, setValues] = useState<number[]>([])
   const [username] = useLocalStorage("username", "")
 
-  const { data, loading, error } = useFecth<IData[]>(
+  const { data, loading } = useFecth<IData[]>(
     `${process.env.VITE_DEFAULT_URL}/bill/${username}/${year}`
   )
 
@@ -73,8 +72,8 @@ const Chart = ({ year }: IProps) => {
     <div className='chart'>
       <h1>estatísticas</h1>
       <div className='chart__container'>
-       {loading && <Loading />}
-       {!loading && <Bar options={options} data={graph} />}
+        {loading && <Loading />}
+        {!loading && <Bar options={options} data={graph} />}
       </div>
     </div>
   )

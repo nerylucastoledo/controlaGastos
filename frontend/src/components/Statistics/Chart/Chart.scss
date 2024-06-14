@@ -20,6 +20,8 @@
 @media (min-width: 988px) {
   .chart {
     &__container {
+      min-width: 592px;
+      min-height: 248px;
 
       canvas {
         width: 592px;
