@@ -68,15 +68,15 @@
       height: 100vh;
 
       &__back {
-        margin-left: 64px;
+        margin-left: 32px;
       }
 
       &__screen {
         height: 90vh;
         max-width: 1280px;
-        margin-left: 64px;
+        margin-left: 32px;
         padding: 32px 48px;
-        width: calc(100% - 368px);
+        width: calc(100% - 304px);
       }
     }
   }

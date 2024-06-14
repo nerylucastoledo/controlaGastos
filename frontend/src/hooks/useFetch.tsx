@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { IData } from '../types'
 
 export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
   const [data, setData] = useState<T | null>(null)

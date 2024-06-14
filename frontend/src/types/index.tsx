@@ -1,4 +1,5 @@
 export interface ICard {
+  _id: string;
   name: string;
   color: string;
 }
@@ -8,11 +9,13 @@ export interface Card extends ICard {
 }
 
 export interface Category {
+  _id: string;
   name: string;
   username: string;
 }
 
 export interface People {
+  _id: string;
   name: string;
   username: string;
 }
