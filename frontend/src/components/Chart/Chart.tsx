@@ -12,11 +12,11 @@ import { useEffect, useState } from 'react';
 
 import "./Chart.scss"
 
-import Loading from '../../Loadig/Loading';
+import Loading from '../Loadig/Loading';
 
 import { options} from "./config"
-import useLocalStorage from '../../../hooks/useLocalStorage';
-import { useFecth } from '../../../hooks/useFetch';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { useFecth } from '../../hooks/useFetch';
 
 ChartJS.register(
   CategoryScale,

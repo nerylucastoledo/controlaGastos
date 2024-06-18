@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import "./Dashboards.scss"
 
 import Cards from "../../components/Cards/Cards"
-import Chart from "../../components/Statistics/Chart/Chart"
+import Chart from "../../components/Chart/Chart"
 import DateFilter from "../../components/DateFilter/DateFilter"
 import Header from "../../components/Header/Header"
 import Loading from "../../components/Loadig/Loading";

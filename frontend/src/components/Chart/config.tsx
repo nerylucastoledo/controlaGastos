@@ -1,4 +1,4 @@
-import { parseMoney } from "../../../utils/FormatValue";
+import { parseMoney } from "../../utils/FormatValue";
 
 export const options = {
   responsive: true,
