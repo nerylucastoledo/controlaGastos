@@ -37,7 +37,7 @@ const Statistics = ({ bill }: { bill: Bill[] }) => {
     <div className="statistics">
       <div className="ranking">
         {ranking?.length ? ranking.map(item => (
-          <div key={item.name_category}>
+          <div key={item.name_category} data-testid="ranking">
             <FaMedal />
             <p className="ranking-title">{item.name_category}</p>
             <p className="ranking-value">{parseMoney(item.total)}</p>
