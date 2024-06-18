@@ -131,3 +131,57 @@ export const mockWithDataToInvoiceItem: Bill[] = [
     "card": "Card 2"
   },
 ]
+
+export const mockCardsToCardsComponent = [
+  {
+    "_id": "1",
+    "username": "usernamelucas",
+    "name": "card1",
+    "color": "#d54848"
+  },
+  {
+    "_id": "2",
+    "username": "usernamelucas",
+    "name": "card2",
+    "color": "#962db4"
+  },
+  {
+    "_id": "3",
+    "username": "usernamelucas",
+    "name": "card3",
+    "color": "#d01616"
+  }
+]
+
+export const mockBillToCardsComponent = [
+  {
+    "_id": "1",
+    "username": "usernamelucas",
+    "date": "Junho2024",
+    "people": "People 1",
+    "category": "vestuario",
+    "value": "R$ 61,90",
+    "item": "Item 1",
+    "card": "card1"
+  },
+  {
+    "_id": "2",
+    "username": "usernamelucas",
+    "date": "Junho2024",
+    "people": "People 1",
+    "category": "lazer",
+    "value": "R$ 800,00",
+    "item": "Item 2",
+    "card": "card1"
+  },
+  {
+    "_id": "3",
+    "username": "usernamelucas",
+    "date": "Junho2024",
+    "people": "Eu",
+    "category": "lazer",
+    "value": "R$ 1.000,00",
+    "item": "Item 3",
+    "card": "card2"
+  }
+]

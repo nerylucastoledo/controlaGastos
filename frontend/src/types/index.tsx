@@ -1,5 +1,5 @@
 export interface ICard {
-  _id: string;
+  _id?: string;
   name: string;
   color: string;
 }
