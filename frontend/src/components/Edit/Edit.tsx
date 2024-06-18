@@ -114,6 +114,7 @@ const Edit = ({ item, setUpdate }: IProps) => {
                 type="text"
                 placeholder="Nome do item"
                 value={name}
+                data-testid="testitem"
                 onChange={({ currentTarget }) => setName(currentTarget.value)}
                 errorMessage={inputError.includes("name") ?  "Item não pode ser vazio!" : ""}
               />
@@ -124,6 +125,7 @@ const Edit = ({ item, setUpdate }: IProps) => {
                 type="text"
                 placeholder="Valor do item"
                 value={value}
+                data-testid="testvalueItem"
                 onChange={({ currentTarget }) => setValue(formatCurrency(currentTarget.value))}
                 errorMessage={inputError.includes("value") ?  "Valor não pode ser vazio!" : ""}
               />

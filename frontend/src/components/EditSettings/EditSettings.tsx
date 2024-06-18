@@ -35,13 +35,14 @@ const EditSettings = ({ item, setUpdate, option }: IProps) => {
 
   useEffect(() => {
     if (item) {
-      setName(item.name)
+      setName(item.name || "")
 
       if (option === "cartao") {
-        setColor(item.color)
+        // @ts-ignore
+        setColor(item.color || "")
       }
     }
-  }, [item])
+  }, [item, option])
 
   const closeToast = () => {
     setMessage("")
@@ -133,6 +134,7 @@ const EditSettings = ({ item, setUpdate, option }: IProps) => {
                 type="text"
                 placeholder="Nome do item"
                 value={name}
+                data-testid={`test${option}`}
                 onChange={({ currentTarget }) => setName(currentTarget.value)}
                 errorMessage={inputError === "name" ?  `Nome ${option === "cartao" ? "do cartão não pode ser vazio!" : `da ${option} não pode ser vazia!`}` : ""}
               />
