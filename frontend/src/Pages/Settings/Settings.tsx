@@ -1,11 +1,11 @@
 import { FormEvent, useState } from "react";
+// @ts-ignore
+import { Helmet } from 'react-helmet';
 
 import "./Settings.scss"
 
 import Header from '../../components/Header/Header';
 import InputField from "../../components/InputField/InputField";
-
-import { Helmet } from 'react-helmet';
 
 import { MdEditSquare, MdDeleteForever } from "react-icons/md";
 
@@ -28,7 +28,7 @@ const Config = () => {
   const [message, setMessage] = useState("")
   const [errorUpdate, setErrorUpdate] = useState(false)
 
-  const [editItem, setEditItem] = useState<Category | People | null>(null)
+  const [editItem, setEditItem] = useState<Category | People | Card | null>(null)
   const [deleteItem, setDeleteItem] = useState<Category | People | Card | null>(null)
   const [option, setOption] = useState<"pessoa" | "categoria" | "cartao">("pessoa")
 

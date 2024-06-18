@@ -4,5 +4,6 @@ import EnvironmentPlugin from 'vite-plugin-environment'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
   plugins: [react(), EnvironmentPlugin('all')],
 })

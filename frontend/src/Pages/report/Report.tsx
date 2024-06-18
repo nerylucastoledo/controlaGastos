@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+// @ts-ignore
 import { Helmet } from 'react-helmet';
 import { ImCool } from "react-icons/im";
 

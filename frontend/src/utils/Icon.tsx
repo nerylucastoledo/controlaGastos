@@ -25,7 +25,9 @@ const iconMap = {
   viagens: IoIosAirplane,
 };
 
-const Icon = ({ name }: { name: string }) => {
+export type IconName = keyof typeof iconMap;
+
+const Icon = ({ name }: { name: IconName }) => {
   const IconComponent = iconMap[name];
 
   if (!IconComponent) {

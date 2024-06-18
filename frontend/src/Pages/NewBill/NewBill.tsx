@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
+// @ts-ignore
 import { Helmet } from 'react-helmet';
 
 import "./NewBill.scss"
@@ -107,6 +108,7 @@ const NewBill = () => {
           username,
           date,
           people: peopleSelected,
+          // @ts-ignore
           category: ENUM_CATEGORYS[categorySelected.trim()] ?? "outros",
           value, 
           item: name,
@@ -123,6 +125,7 @@ const NewBill = () => {
       username,
       date: `${monthSelected}${yearSelected}`,
       people: peopleSelected,
+      // @ts-ignore
       category: ENUM_CATEGORYS[categorySelected.trim()] ?? "outros",
       value, 
       item,

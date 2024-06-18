@@ -5,7 +5,10 @@ export const options = {
   scales: {
     y: {
       ticks: {
-        callback: (value: number) => parseMoney(value)
+        // @ts-ignore
+        callback: (value) => {
+          return parseMoney(value);
+        }
       }
     },
     x: {
@@ -15,11 +18,9 @@ export const options = {
    }
   },
   plugins: {
-    legend: {
-      position: 'unset' as const,
-    },
     tooltip: {
       callbacks: {
+        // @ts-ignore
         label: (context) => {
           let label = context.dataset.label || '';
           if (label) {

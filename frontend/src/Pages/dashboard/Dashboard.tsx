@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ImCool } from "react-icons/im";
+// @ts-ignore
 import { Helmet } from 'react-helmet';
 
 import "./Dashboards.scss"
