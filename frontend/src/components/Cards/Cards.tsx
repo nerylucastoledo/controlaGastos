@@ -28,7 +28,10 @@ const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
         .filter((item) => item.card === name)
         .reduce((acc, item) => acc + formatCurrencyToNumber(item.value), 0)
 
-      const { color } = cards.filter(card => card.name === name)[0]
+      let color = ""
+      if (cards) {
+        color = cards.filter(card => card.name === name)[0]?.color
+      }
       
       invoices.push({
         color,
@@ -58,6 +61,7 @@ const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
             className="cards__container-content" 
             style={{ backgroundColor: `${color}`}}
             onClick={() => handlecard(name)}
+            data-testid="card"
           >
             <div>
               <p className="cards__container-content__payable">{parseMoney(total)}</p>
