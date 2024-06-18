@@ -160,7 +160,7 @@ const NewBill = () => {
     fetch(`${process.env.VITE_DEFAULT_URL}/bill`, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ body, nstallment: installmentValue }) 
+      body: JSON.stringify({ body, installment: installmentValue }) 
     })
     .then(response => response.json())
     .then(data => {
