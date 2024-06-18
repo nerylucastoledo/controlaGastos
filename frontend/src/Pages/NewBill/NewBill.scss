@@ -1,0 +1,90 @@
+.new-bill {
+  &__container {
+    padding: 0 16px;
+
+    h1 {
+      margin: 24px 0 8px;
+      font-weight: bold;
+      color: #595959;
+      text-align: left;
+      font-size: 32px;
+    }
+
+    &__subtitle {
+      color: #595959;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 16px;
+    margin: 24px 0;
+    max-width: 100%;
+    
+    &__date {
+      display: flex;
+      gap: 16px;
+      
+      > div {
+        width: 50%;
+      }
+    }
+
+    &__installment {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+
+      label {
+        margin-bottom: 0;
+      }
+
+      input {
+        max-width: unset !important;
+        width: unset !important;
+      }
+    }
+
+    select, input {
+      max-width: 100%;
+    }
+
+    .select-group {
+      margin-top: 0;
+    } 
+
+    .form-group {
+      margin-bottom: 0;
+
+      p.input-error {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+@media (min-width: 988px) {
+  .new-bill {
+    display: flex;
+    min-height: 100vh;
+    
+    &__container {
+      max-width: 1280px;
+      width: 100%;
+      padding: 0 32px;
+    }
+
+    &-form {
+      max-width: 700px;
+      padding: 32px 16px;
+
+      select, input {
+        max-width: 100%;
+      }
+    }
+  }
+}
