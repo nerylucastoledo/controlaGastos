@@ -35,6 +35,7 @@ const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProp
                   type="button" 
                   data-bs-toggle="modal" 
                   data-bs-target="#updateInvoice" 
+                  data-testid="modalUpdate"
                   onClick={() => setEditItem(dataFilteredByPeople[index])}
                 >
                   <MdEditSquare size={16} color="#007bff"/>
@@ -44,7 +45,8 @@ const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProp
                   className="btnModal" 
                   type="button" 
                   data-bs-toggle="modal" 
-                  data-bs-target="#deleteInvoice" 
+                  data-bs-target="#deleteInvoice"
+                  data-testid="modalDelete"
                   onClick={() => setDeleteItem(dataFilteredByPeople[index])}
                 >
                   <MdDeleteForever size={16} color="#dc3545" />
@@ -58,7 +60,7 @@ const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProp
         )}
       </div>
       
-      <p className="invoice__item__total">{parseMoney(valueToPay)}</p>
+      <p className="invoice__item__total" data-testid="total">{parseMoney(valueToPay)}</p>
     </div>
   )
 }
