@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
+// @ts-ignore
 import { Helmet } from 'react-helmet';
 
 import HeaderLoggedOut from "../../components/HeaderLoggedOut/HeaderLoggedOut"

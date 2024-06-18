@@ -27,8 +27,8 @@ const Wallet = ({ bill }: { bill: Bill[] }) => {
             <span>Saldo</span>
           </div>
 
-          <p style={{ color: balance > 0 ? "#006400" : "#B22222" }}>
-            {balance > 0 ? "+ " : "- "} {parseMoney(balance)}
+          <p style={{ color: balance > 0 ? "#006400" : "#B22222" }} data-testid="balance">
+            {balance > 0 ? "+" : ""} {parseMoney(balance)}
           </p>
         </div>
         <div className="wallet-content__accounts">
@@ -40,7 +40,7 @@ const Wallet = ({ bill }: { bill: Bill[] }) => {
           <div className="wallet-content__accounts-divisor"></div>
           <div className="wallet-content__accounts-payable">
             <p>Contas</p>
-            <p style={{ color: valueToPay !== 0 ? "#B22222" : "#595959"}}>
+            <p style={{ color: valueToPay !== 0 ? "#B22222" : "#595959"}} data-testid="payable">
               {parseMoney(valueToPay)}
             </p>
           </div>
