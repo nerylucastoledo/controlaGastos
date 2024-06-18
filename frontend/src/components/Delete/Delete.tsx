@@ -24,7 +24,7 @@ const Delete = ({ item, setUpdate}: IProps) => {
   const handleDelete = (e: FormEvent) => {
     e.preventDefault()
 
-    const submit = document.querySelector("#formUpdateInvoice .btn-primary-custom") as HTMLButtonElement;
+    const submit = document.querySelector("#formdeleteInvoice .btn-primary-custom") as HTMLButtonElement;
     const btnClose = document.getElementById("closeDelete") as HTMLButtonElement
     submit.disabled = true;
 
@@ -71,7 +71,7 @@ const Delete = ({ item, setUpdate}: IProps) => {
             </button>
           </div>
           <div className="modal-body delete">
-            <p>Tem certeza que quer deletar <span>{item?.item}</span>?</p>
+            <p data-testid="message-delete">Tem certeza que quer deletar <span>{item?.item}</span>?</p>
 
             <form id="formdeleteInvoice" onSubmit={handleDelete}>
               <button style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">

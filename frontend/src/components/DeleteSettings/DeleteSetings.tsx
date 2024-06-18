@@ -81,7 +81,7 @@ const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
           <div className="modal-body delete">
             {option === "cartao" && <p className="option_card">Todas as faturas desse cartão será deletada</p>}
 
-            <p>Tem certeza que quer deletar o(a) <span>{item?.name}</span>?</p>
+            <p data-testid="message-delete">Tem certeza que quer deletar o(a) <span>{item?.name}</span>?</p>
 
             <form id="formdeleteSettings" onSubmit={handleDelete}>
               <button style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">
