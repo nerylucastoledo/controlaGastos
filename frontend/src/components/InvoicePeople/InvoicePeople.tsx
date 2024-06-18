@@ -21,6 +21,7 @@ const InvoicePeople = ({ peoples, peopleSelected, setPeopleSelected }: IProps) =
           key={people} 
           className={people === peopleSelected ? "active" : ""}
           onClick={() => setPeopleSelected(people)}
+          data-testid="people"
         >
           {people}
         </button>
