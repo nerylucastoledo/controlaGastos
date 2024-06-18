@@ -1,5 +1,5 @@
-
 import "./RecentExpenses.scss"
+
 import { Bill } from "../../types";
 import Icon from "../../utils/Icon";
 

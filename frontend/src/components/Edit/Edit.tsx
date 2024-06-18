@@ -1,11 +1,11 @@
 import { FormEvent, useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
 import "./Edit.scss"
 
-import Toast from "../Toast/Toast";
 import InputField from "../InputField/InputField";
+import Toast from "../Toast/Toast";
 
-import { IoMdClose } from "react-icons/io";
 import { Bill } from "../../types";
 import { formatCurrency } from "../../utils/FormatValue";
 
@@ -35,27 +35,30 @@ const Edit = ({ item, setUpdate }: IProps) => {
 
   const handleEdit = (e: FormEvent) => {
     e.preventDefault()
-    const btnSubmit = document.querySelector("#formUpdateInvoice .btn-primary-custom") as HTMLButtonElement;
+
+    // remove errors from inputs
+    setInputError([]);
+
+    const submit = document.querySelector("#formUpdateInvoice .btn-primary-custom") as HTMLButtonElement;
     const btnClose = document.getElementById("closeEdit") as HTMLButtonElement
-    btnSubmit.disabled = true;
+    submit.disabled = true;
 
     const newErrors: string[] = [];
 
+    // validate if the inputs are filled
     if (!name) newErrors.push("name")
     if (!value || value === "R$ 0,00") newErrors.push("value")
 
     setInputError(newErrors);
 
     if (newErrors.length) {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       return
     }
 
     fetch(`${process.env.VITE_DEFAULT_URL}/bill`, {
       method: "PUT",
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: {  'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         ...item,
         value,
@@ -64,25 +67,27 @@ const Edit = ({ item, setUpdate }: IProps) => {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.error) throw new Error()
+      if (data.error) throw new Error(data.error.message)
 
+      // show success tooltip and update the component
       const { message } = data
       setMessage(message)
       setError(false)
+
+      // reset inputs
       setName("")
       setValue("")
-      setInputError([])
       btnClose.click()
       
       setTimeout(() => {
-        btnSubmit.disabled = false;
+        submit.disabled = false;
         closeToast()
         setUpdate(true)
-      }, 500);
+      }, 1000);
       
     })
     .catch((error) => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
       setMessage(error.message || "Ocorreu um erro interno!")
     });
@@ -91,10 +96,12 @@ const Edit = ({ item, setUpdate }: IProps) => {
   return (
     <div className="modal fade" id="updateInvoice" tabIndex={-1} aria-labelledby="updateInvoiceLabel" aria-hidden="true">
       {message && <Toast message={message} error={error} hideToast={closeToast} />}
+
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
             <h1>Editar o gasto</h1>
+
             <button type="button" data-bs-dismiss="modal" aria-label="Close" id="closeEdit">
               <IoMdClose size={28} color="#595959"/>
             </button>
@@ -121,11 +128,7 @@ const Edit = ({ item, setUpdate }: IProps) => {
                 errorMessage={inputError.includes("value") ?  "Valor não pode ser vazio!" : ""}
               />
 
-              <button 
-                type="submit"
-                className="btn-primary-custom" 
-                style={{ marginTop: "24px" }}
-              >
+              <button style={{ marginTop: "24px" }}type="submit" className="btn-primary-custom">
                 Atualizar
               </button>
             </form>

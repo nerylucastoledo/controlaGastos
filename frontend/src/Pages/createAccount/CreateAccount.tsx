@@ -1,13 +1,13 @@
 import { FormEvent, useState } from 'react'
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom'
 
 import "./CreateAccount.scss"
 
-import { Helmet } from 'react-helmet';
-
 import HeaderLoggedOut from '../../components/HeaderLoggedOut/HeaderLoggedOut'
 import InputField from '../../components/InputField/InputField'
-import { useNavigate } from 'react-router-dom'
 import Toast from '../../components/Toast/Toast'
+
 import { formatCurrency } from '../../utils/FormatValue'
 
 const CreateAccount = () => {
@@ -22,16 +22,26 @@ const CreateAccount = () => {
   const [message, setMessage] = useState("")
   const [error, setError] = useState(false)
 
+  const closeToast = () => {
+    setMessage("")
+    setError(false)
+  }
+
   const handleCreateAccount = (e: FormEvent) => {
     e.preventDefault()
-    const btnSubmit = document.querySelector("#formCreateAccount .btn-primary-custom") as HTMLButtonElement;
-    btnSubmit.disabled = true;
+
+    // remove errors from inputs
+    setErrors([]);
+
+    const submit = document.querySelector("#formCreateAccount .btn-primary-custom") as HTMLButtonElement;
+    submit.disabled = true;
 
     const newErrors: string[] = [];
 
+    // validate if the inputs are filled
     if (!email) newErrors.push("email")
     if (!name) newErrors.push("name")
-    if (!salary) newErrors.push("salary")
+    if (!salary || salary === "R$ 0,00") newErrors.push("salary")
     if (!password) newErrors.push("password")
     if (!confirmPassword) newErrors.push("confirmPassword")
     if(confirmPassword !== password) newErrors.push("confirmPassword")
@@ -39,16 +49,14 @@ const CreateAccount = () => {
     setErrors(newErrors);
 
     if (newErrors.length) {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       return
     }
 
     const id = Math.random().toString(16).slice(2)
     fetch(`${process.env.VITE_DEFAULT_URL}/register`, {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         email, 
         password, 
@@ -59,23 +67,20 @@ const CreateAccount = () => {
     })
     .then(response => response.json())
     .then(data => {
-      if (data.error) throw new Error()
+      if (data.error) throw new Error(data.error.message)
       
+      // show success tooltip and redirect
       setMessage(data.message)
+      setError(false)
       setTimeout(() => navigate("/login"), 2000);
     })
     .catch(error => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
-      setMessage(error)
+      setMessage(error.message || "Usuário inválido ou não cadastrado!")
     });
   }
 
-  const closeToast = () => {
-    setMessage("")
-    setError(false)
-  }
-  
   return (
     <>
       <Helmet>
@@ -148,11 +153,7 @@ const CreateAccount = () => {
               errorMessage={errors.includes("confirmPassword") ?  "Senha diferente ou vazia!" : ""}
             />
 
-            <button 
-              type="submit" 
-              className="btn-primary-custom" 
-              style={{ marginTop: "24px" }}
-            >
+            <button style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">
               Criar conta
             </button>
 

@@ -8,14 +8,15 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { useEffect, useState } from 'react';
 
 import "./Chart.scss"
+
+import Loading from '../../Loadig/Loading';
 
 import { options} from "./config"
 import useLocalStorage from '../../../hooks/useLocalStorage';
 import { useFecth } from '../../../hooks/useFetch';
-import { useEffect, useState } from 'react';
-import Loading from '../../Loadig/Loading';
 
 ChartJS.register(
   CategoryScale,
@@ -66,7 +67,6 @@ const Chart = ({ year }: IProps) => {
       },
     ],
   };
-
 
   return (
     <div className='chart'>

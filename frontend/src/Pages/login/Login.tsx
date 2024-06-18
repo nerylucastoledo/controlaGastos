@@ -1,6 +1,5 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
-
 import { Helmet } from 'react-helmet';
 
 import HeaderLoggedOut from "../../components/HeaderLoggedOut/HeaderLoggedOut"
@@ -16,6 +15,11 @@ const Login = () => {
   const [message, setMessage] = useState("")
   const [error, setError] = useState(false)
 
+  const closeToast = () => {
+    setMessage("")
+    setError(false)
+  }
+
   const addCookies = (accessToken: string, expirationTime: string) => {
     const expires = new Date(expirationTime);
     document.cookie = `access_token=${accessToken};`;
@@ -29,55 +33,53 @@ const Login = () => {
 
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
-    const btnSubmit = document.querySelector("#formLogin .btn-primary-custom") as HTMLButtonElement;
-    btnSubmit.disabled = true;
+
+    // remove errors from inputs
+    setErrors([]);
+
+    const submit = document.querySelector("#formLogin .btn-primary-custom") as HTMLButtonElement;
+    submit.disabled = true;
 
     const newErrors: string[] = [];
 
+    // validate if the inputs are filled
     if (!email) newErrors.push("email")
     if (!password) newErrors.push("password")
 
     setErrors(newErrors);
 
     if (newErrors.length) {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       return
     }
 
     fetch(`${process.env.VITE_DEFAULT_URL}/login`, {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        email, 
-        password, 
-      }) 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }) 
     })
     .then(response => response.json())
     .then(data => {
-      if (data.error) throw new Error()
+      if (data.error) throw new Error(data.error.message)
         
       const { username, salary, userCredential, message } = data
       const { accessToken, expirationTime } = userCredential.user.stsTokenManager;
+
       addCookies(accessToken, expirationTime)
       addUserDate(username, salary)
+
+      // show success tooltip and redirect
       setMessage(message)
       setError(false)
       setTimeout(() => navigate("/"), 2000);
     })
     .catch((error) => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
       setMessage(error.message || "Usuário inválido ou não cadastrado!")
     });
   }
 
-  const closeToast = () => {
-    setMessage("")
-    setError(false)
-  }
-  
   return (
     <>
       <Helmet>
@@ -121,11 +123,7 @@ const Login = () => {
               errorMessage={errors.includes("password") ?  "Senha não pode ser vazia!" : ""}
             />
 
-            <button 
-              type="submit" 
-              className="btn-primary-custom" 
-              style={{ marginTop: "24px" }}
-            >
+            <button style={{ marginTop: "24px" }} type="submit"  className="btn-primary-custom">
               Entrar
             </button>
 

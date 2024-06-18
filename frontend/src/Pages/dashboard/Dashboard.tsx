@@ -1,21 +1,20 @@
 import { useState } from "react";
-
-import "./Dashboards.scss"
-
 import { ImCool } from "react-icons/im";
 import { Helmet } from 'react-helmet';
 
-import { useData } from "../../context/Data"
+import "./Dashboards.scss"
 
-import { Header} from "../../components/Header/Header"
-import DateFilter from "../../components/DateFilter/DateFilter"
-import Statistics from "../../components/Statistics/Statistics"
-import Wallet from "../../components/Wallet/Wallet"
 import Cards from "../../components/Cards/Cards"
-import RecentExpenses from "../../components/RecentExpenses/RecentExpenses"
 import Chart from "../../components/Statistics/Chart/Chart"
+import DateFilter from "../../components/DateFilter/DateFilter"
+import Header from "../../components/Header/Header"
 import Loading from "../../components/Loadig/Loading";
+import RecentExpenses from "../../components/RecentExpenses/RecentExpenses"
+import Statistics from "../../components/Statistics/Statistics"
 import Toast from "../../components/Toast/Toast";
+import Wallet from "../../components/Wallet/Wallet"
+
+import { useData } from "../../context/Data"
 
 const Dashboard = () => {
   const { data, loading, error, setMonth, setYear, month, year } = useData()

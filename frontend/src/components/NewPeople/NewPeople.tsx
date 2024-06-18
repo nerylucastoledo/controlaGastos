@@ -1,10 +1,10 @@
 import { FormEvent, useState } from "react"
-
 import { IoMdClose } from "react-icons/io"
 
 import InputField from "../InputField/InputField"
-import useLocalStorage from "../../hooks/useLocalStorage"
 import Toast from "../Toast/Toast"
+
+import useLocalStorage from "../../hooks/useLocalStorage"
 
 const NewPeople = () => {
   const [username] = useLocalStorage("username", "")
@@ -27,57 +27,60 @@ const NewPeople = () => {
 
   const handlePeople = (e: FormEvent) => {
     e.preventDefault()
+
+    // remove error from input
     setInputError(false)
 
-    const btnSubmit = document.querySelector("#formNewPeople .btn-primary-custom") as HTMLButtonElement;
+    const submit = document.querySelector("#formNewPeople .btn-primary-custom") as HTMLButtonElement;
     const btnClose = document.getElementById("closePeople") as HTMLButtonElement
-    btnSubmit.disabled = true;
+    submit.disabled = true;
 
+    // validate if the inputs are filled
     if (!name) {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setInputError(true)
       return
     }
 
     fetch(`${process.env.VITE_DEFAULT_URL}/peoples`, {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        name, 
-        username, 
-      }) 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, username }) 
     })
     .then(response => response.json())
     .then(data => {
       if (data.error) throw new Error(data.error.message)
         
+      // show success tooltip and update the component
       const { message } = data
       setMessage(message)
       setName("")
       setError(false)
       
       setTimeout(() => {
-        btnSubmit.disabled = false;
+        submit.disabled = false;
         btnClose.click()
         closeToast()
       }, 1000);
     })
     .catch((error) => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
       setMessage(error.message || "Não foi possível cadastrar!")
+
+      setTimeout(() => closeToast(), 1000);
     });
   }
 
   return (
     <div className="modal fade" id="newPeople" tabIndex={-1} aria-labelledby="newPeopleLabel" aria-hidden="true">
       {message && <Toast message={message} error={error} hideToast={closeToast} />}
+
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
             <h1>Criar pessoa</h1>
+
             <button 
               type="button" 
               data-bs-dismiss="modal" 
@@ -100,11 +103,7 @@ const NewPeople = () => {
                 errorMessage={inputError ?  "Nome não pode ser vazio!" : ""}
               />
 
-              <button 
-                type="submit"
-                className="btn-primary-custom" 
-                style={{ marginTop: "24px" }}
-              >
+              <button style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">
                 Cadastrar
               </button>
             </form>

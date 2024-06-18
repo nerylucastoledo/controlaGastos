@@ -1,11 +1,10 @@
+import { MdEditSquare, MdDeleteForever } from "react-icons/md";
+import { ImCool } from "react-icons/im";
+
 import "./Invoice.item.scss"
 
-import { MdEditSquare, MdDeleteForever } from "react-icons/md";
 import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
-
 import { Bill } from "../../types";
-
-import { ImCool } from "react-icons/im";
 
 interface IProps {
   data: Bill[];
@@ -29,6 +28,7 @@ const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProp
           <div key={`${item}-${index}`} className="info">
             <div className="info__container">
               <p>{item}</p>
+
               <div className="info__container__actions">
                 <button 
                   className="btnModal" 
@@ -39,6 +39,7 @@ const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProp
                 >
                   <MdEditSquare size={16} color="#007bff"/>
                 </button>
+
                 <button 
                   className="btnModal" 
                   type="button" 
@@ -56,6 +57,7 @@ const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProp
           <p className="invoice__item__empty">fatura vazia <ImCool size={16} /></p>
         )}
       </div>
+      
       <p className="invoice__item__total">{parseMoney(valueToPay)}</p>
     </div>
   )

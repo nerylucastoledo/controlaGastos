@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { IoArrowBack } from "react-icons/io5";
+import { Helmet } from 'react-helmet';
 
 import "./Invoice.scss"
 
-import { Header } from "../../components/Header/Header";
-import Edit from "../../components/Edit/Edit";
 import Delete from "../../components/Delete/Delete";
-import Loading from "../../components/Loadig/Loading";
-import InvoicePeople from "../../components/InvoicePeople/InvoicePeople";
+import Edit from "../../components/Edit/Edit";
+import Header from "../../components/Header/Header";
 import InvoiceItem from "../../components/InvoiceItem/InvoiceItem";
-
-import { useNavigate, useParams } from "react-router-dom";
-import { useData } from "../../context/Data";
-import { Bill } from "../../types";
-
-import { IoArrowBack } from "react-icons/io5";
+import InvoicePeople from "../../components/InvoicePeople/InvoicePeople";
+import Loading from "../../components/Loadig/Loading";
 import Toast from "../../components/Toast/Toast";
-import { Helmet } from 'react-helmet';
+
+import { Bill } from "../../types";
+import { useData } from "../../context/Data";
 
 const Invoice = () => {
   const navigate = useNavigate()
+  
   const { name_card } = useParams()
   const { data, loading, error, setUpdate } = useData()
 

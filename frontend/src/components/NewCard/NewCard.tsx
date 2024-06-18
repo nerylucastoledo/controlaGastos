@@ -1,10 +1,10 @@
 import { FormEvent, useState } from "react"
-
 import { IoMdClose } from "react-icons/io"
 
 import InputField from "../InputField/InputField"
-import useLocalStorage from "../../hooks/useLocalStorage"
 import Toast from "../Toast/Toast"
+
+import useLocalStorage from "../../hooks/useLocalStorage"
 
 const NewCard = () => {
   const [username] = useLocalStorage("username", "")
@@ -29,44 +29,37 @@ const NewCard = () => {
 
   const handleCard = (e: FormEvent) => {
     e.preventDefault()
+
+    // remove error from input
     setInputinputErrors([])
 
-    const btnSubmit = document.querySelector("#formNewcard .btn-primary-custom") as HTMLButtonElement;
+    const submit = document.querySelector("#formNewcard .btn-primary-custom") as HTMLButtonElement;
     const btnClose = document.getElementById("closeCard") as HTMLButtonElement
-    btnSubmit.disabled = true;
+    submit.disabled = true;
 
     const newinputErrors: string[] = [];
 
-    if (!name) {
-      newinputErrors.push("name")
-    }
-
-    if (!color) {
-      newinputErrors.push("color")
-    }
+    // validate if the inputs are filled
+    if (!name) newinputErrors.push("name")
+    if (!color) newinputErrors.push("color")
 
     setInputinputErrors(newinputErrors);
 
     if (newinputErrors.length) {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       return
     }
 
     fetch(`${process.env.VITE_DEFAULT_URL}/cards`, {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        name,
-        color,
-        username, 
-      }) 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, color, username }) 
     })
     .then(response => response.json())
     .then(data => {
       if (data.error) throw new Error(data.error.message)
         
+      // show success tooltip and update the component
       const { message } = data
       setMessage(message)
       setName("")
@@ -74,19 +67,17 @@ const NewCard = () => {
       setError(false)
       
       setTimeout(() => {
-        btnSubmit.disabled = false;
+        submit.disabled = false;
         btnClose.click()
         closeToast()
       }, 1000);
     })
     .catch((error) => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
       setMessage(error.message || "Não foi possível cadastrar!")
 
-      setTimeout(() => {
-        closeToast()
-      }, 1000);
+      setTimeout(() => closeToast(), 1000);
     });
   }
 
@@ -132,11 +123,7 @@ const NewCard = () => {
                 errorMessage={inputErrors.includes("color") ?  "Cor não pode ser vazia!" : ""}
               />
 
-              <button 
-                type="submit" 
-                className="btn-primary-custom" 
-                style={{ marginTop: "24px" }}
-              >
+              <button style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">
                 Cadastrar
               </button>
             </form>

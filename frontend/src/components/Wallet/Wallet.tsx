@@ -1,9 +1,10 @@
+import { FaWallet } from "react-icons/fa";
+
+import "./Wallet.scss"
+
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Bill } from "../../types";
 import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
-import "./Wallet.scss"
-
-import { FaWallet } from "react-icons/fa";
 
 const Wallet = ({ bill }: { bill: Bill[] }) => {
   const [salary] = useLocalStorage("salary", "")
@@ -25,6 +26,7 @@ const Wallet = ({ bill }: { bill: Bill[] }) => {
             <span><FaWallet size={24} color="#FFA8A8"/></span>
             <span>Saldo</span>
           </div>
+
           <p style={{ color: balance > 0 ? "#006400" : "#B22222" }}>
             {balance > 0 ? "+ " : "- "} {parseMoney(balance)}
           </p>
@@ -34,6 +36,7 @@ const Wallet = ({ bill }: { bill: Bill[] }) => {
             <p>Salário</p>
             <p>{salary}</p>
           </div>
+          
           <div className="wallet-content__accounts-divisor"></div>
           <div className="wallet-content__accounts-payable">
             <p>Contas</p>

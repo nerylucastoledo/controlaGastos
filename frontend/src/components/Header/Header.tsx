@@ -1,15 +1,15 @@
+import { useNavigate } from "react-router-dom";
+import { RiMenu2Fill } from 'react-icons/ri';
+import { IoMdClose } from "react-icons/io";
+import { IoIosLogOut } from "react-icons/io";
+
 import "./Header.scss"
 
 import Logo from "../../assets/logo.png"
 
-import { RiMenu2Fill } from 'react-icons/ri';
-import { IoMdClose } from "react-icons/io";
-import { IoIosLogOut } from "react-icons/io";
 import Menu from "./menu/Menu";
-import { useNavigate } from "react-router-dom";
 
-
-export const Header = () => {
+const Header = () => {
   const navigate = useNavigate()
 
   return (
@@ -29,9 +29,9 @@ export const Header = () => {
               <IoMdClose size={36} color="#595959"/>
             </button>
           </div>
+          
           <div className="offcanvas-body">
             <Menu />
-
             <div>
               <button className="offcanvas-body__logout">
                 Sair
@@ -48,3 +48,5 @@ export const Header = () => {
     </header>
   )
 }
+
+export default Header;

@@ -1,11 +1,11 @@
 import { FormEvent, useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
 import "./EditSettings.scss"
 
-import Toast from "../Toast/Toast";
 import InputField from "../InputField/InputField";
+import Toast from "../Toast/Toast";
 
-import { IoMdClose } from "react-icons/io";
 import { Card, Category, People } from "../../types";
 
 interface IProps {
@@ -50,14 +50,21 @@ const EditSettings = ({ item, setUpdate, option }: IProps) => {
 
   const handleEdit = (e: FormEvent) => {
     e.preventDefault()
-    const btnSubmit = document.querySelector("#formUpdateSettings .btn-primary-custom") as HTMLButtonElement;
+
+    // remove error from input
+    setInputError("");
+
+    const submit = document.querySelector("#formUpdateSettings .btn-primary-custom") as HTMLButtonElement;
     const btnClose = document.getElementById("closeEdit") as HTMLButtonElement
-    btnSubmit.disabled = true;
+    submit.disabled = true;
 
-    const body: { name: string, color?: string} = { name }
+    const body: { name: string, color?: string} = { 
+      name 
+    }
 
+    // validate if the inputs are filled
     if (!name) {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setInputError("name");
       return
     }
@@ -66,40 +73,35 @@ const EditSettings = ({ item, setUpdate, option }: IProps) => {
       body.color = color;
     }
 
-    body.name = name
-
     fetch(`${process.env.VITE_DEFAULT_URL}/${ENUM[option]}`, {
       method: "PUT",
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ _id: item?._id, ...body }) 
     })
     .then(response => response.json())
     .then(data => {
       if (data.error) throw new Error(data.error.message)
 
+      // show success tooltip and update the component
       const { message } = data
       setMessage(message)
       setError(false)
       setInputError("")
       
       setTimeout(() => {
+        submit.disabled = false;
         btnClose.click()
         closeToast()
-        btnSubmit.disabled = false;
         setUpdate(true)
       }, 1000);
       
     })
     .catch((error) => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
       setMessage(error.message || "Ocorreu um erro interno!")
       
-      setTimeout(() => {
-        closeToast()
-      }, 1000);
+      setTimeout(() => closeToast(), 1000);
     });
   }
 
@@ -124,7 +126,6 @@ const EditSettings = ({ item, setUpdate, option }: IProps) => {
 
           </div>
           <div className="modal-body edit">
-
             <form id="formUpdateSettings" onSubmit={handleEdit}>
               <InputField
                 label={`Nome ${option === "cartao" ? "do cartão" : `da ${option}`}`}
@@ -149,15 +150,10 @@ const EditSettings = ({ item, setUpdate, option }: IProps) => {
                 />
               )}
 
-              <button 
-                type="submit"
-                className="btn-primary-custom" 
-                style={{ marginTop: "24px" }}
-              >
+              <button  style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">
                 Atualizar
               </button>
             </form>
-
           </div>
         </div>
       </div>

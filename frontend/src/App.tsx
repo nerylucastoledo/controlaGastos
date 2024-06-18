@@ -17,6 +17,7 @@ import NewCategory from "./components/NewCategory/NewCategory";
 import NewCard from "./components/NewCard/NewCard";
 import { DataContextProvider } from "./context/Data";
 import Invoice from "./pages/Invoice/Invoice";
+import NewBill from "./pages/NewBill/NewBill";
 
 function App() {
   return (
@@ -47,6 +48,11 @@ function App() {
           <Route path="/config" element={
             <ProtectedRoute>
               <Settings />
+            </ProtectedRoute>
+          } />
+          <Route path="/new-bill" element={
+            <ProtectedRoute>
+              <NewBill />
             </ProtectedRoute>
           } />
         </Routes>

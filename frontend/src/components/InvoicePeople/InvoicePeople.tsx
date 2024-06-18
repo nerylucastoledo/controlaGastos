@@ -15,6 +15,7 @@ const InvoicePeople = ({ peoples, peopleSelected, setPeopleSelected }: IProps) =
       >
         Eu
       </button>
+      
       {peoples?.length ? peoples.map(people => (
         <button 
           key={people} 

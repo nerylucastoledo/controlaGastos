@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 
 import "./Settings.scss"
 
-import { Header } from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 import InputField from "../../components/InputField/InputField";
 
 import { Helmet } from 'react-helmet';
@@ -124,7 +124,7 @@ const Config = () => {
 
           {!loading && !error && (
             <>
-              <h1>Configure suas informações.</h1>
+              <h1>Suas informações.</h1>
 
               <form id="formSettings" onSubmit={handleSalary}>
                 <InputField

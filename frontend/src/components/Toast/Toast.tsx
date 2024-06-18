@@ -15,6 +15,7 @@ export const Toast = ({ message, error, hideToast }: IProps) => {
         <div className="toast-body">
           {message}
         </div>
+        
         <button type="button" aria-label="Close" onClick={hideToast}>
           <IoCloseOutline size={24} color="#fff"/>
         </button>

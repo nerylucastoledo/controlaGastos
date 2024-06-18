@@ -1,10 +1,10 @@
 import { FormEvent, useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
 import "./DeleteSettings.scss"
 
 import Toast from "../Toast/Toast";
 
-import { IoMdClose } from "react-icons/io";
 import { Card, Category, People } from "../../types";
 
 interface IProps {
@@ -23,7 +23,7 @@ const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("")
 
-    const closeToast = () => {
+  const closeToast = () => {
     setMessage("")
     setError(false)
   }
@@ -31,27 +31,26 @@ const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
   const handleDelete = (e: FormEvent) => {
     e.preventDefault()
 
-    const btnSubmit = document.querySelector("#formdeleteSettings .btn-primary-custom") as HTMLButtonElement;
+    const submit = document.querySelector("#formdeleteSettings .btn-primary-custom") as HTMLButtonElement;
     const btnClose = document.getElementById("closeDelete") as HTMLButtonElement
-    btnSubmit.disabled = true;
+    submit.disabled = true;
 
     fetch(`${process.env.VITE_DEFAULT_URL}/${ENUM[option]}`, {
       method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({_id: item?._id }) 
     })
     .then(response => response.json())
     .then(data => {
       if (data.error) throw new Error(data.error.message)
 
+      // show success tooltip and update the component
       const { message } = data
       setMessage(message)
       setError(false)
       
       setTimeout(() => {
-        btnSubmit.disabled = false;
+        submit.disabled = false;
         closeToast()
         btnClose.click()
         setUpdate(true)
@@ -59,7 +58,7 @@ const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
       
     })
     .catch((error) => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
       setMessage(error.message || "Ocorreu um erro interno!")
     });
@@ -85,15 +84,10 @@ const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
             <p>Tem certeza que quer deletar o(a) <span>{item?.name}</span>?</p>
 
             <form id="formdeleteSettings" onSubmit={handleDelete}>
-              <button 
-                type="submit"
-                className="btn-primary-custom" 
-                style={{ marginTop: "24px" }}
-              >
+              <button style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">
                 Deletar
               </button>
             </form>
-            
           </div>
         </div>
       </div>

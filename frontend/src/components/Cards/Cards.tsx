@@ -1,10 +1,10 @@
 import { RiVisaLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 import "./Cards.scss"
 
 import { Bill, Card, ICard } from "../../types";
 import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
-import { useNavigate } from "react-router-dom";
 
 interface IInvoice extends ICard {
   total: number;
@@ -44,9 +44,7 @@ const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
 
   const handlecard = (name: string) => {
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      navigate(`/invoice/${name}`)
-    }, 200);
+    setTimeout(() =>  navigate(`/invoice/${name}`), 200);
   }
 
   return (
@@ -54,7 +52,7 @@ const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
       <h1>cartões</h1>
 
       <div className="cards__container">
-        {invoices.length && invoices.map(({ color, name, total}, index) => (
+        {invoices?.length ? invoices.map(({ color, name, total}, index) => (
           <button 
             key={`${name}-${index}`} 
             className="cards__container-content" 
@@ -71,7 +69,7 @@ const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
               <p>**** **** **** ****</p>
             </div>
           </button>
-        ))}
+        )) : null}
       </div>
     </div>
   )

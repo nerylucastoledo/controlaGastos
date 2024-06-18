@@ -1,10 +1,10 @@
 import { FormEvent, useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
 import "./Delete.scss"
 
 import Toast from "../Toast/Toast";
 
-import { IoMdClose } from "react-icons/io";
 import { Bill } from "../../types";
 
 interface IProps {
@@ -24,37 +24,34 @@ const Delete = ({ item, setUpdate}: IProps) => {
   const handleDelete = (e: FormEvent) => {
     e.preventDefault()
 
-    const btnSubmit = document.querySelector("#formUpdateInvoice .btn-primary-custom") as HTMLButtonElement;
+    const submit = document.querySelector("#formUpdateInvoice .btn-primary-custom") as HTMLButtonElement;
     const btnClose = document.getElementById("closeDelete") as HTMLButtonElement
-    btnSubmit.disabled = true;
+    submit.disabled = true;
 
     fetch(`${process.env.VITE_DEFAULT_URL}/bill`, {
       method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        _id: item?._id
-      }) 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({  _id: item?._id }) 
     })
     .then(response => response.json())
     .then(data => {
-      if (data.error) throw new Error()
+      if (data.error) throw new Error(data.error.message)
 
+      // show success tooltip and update the component
       const { message } = data
       setMessage(message)
       setError(false)
-      btnClose.click()
       
       setTimeout(() => {
-        btnSubmit.disabled = false;
+        submit.disabled = false;
         closeToast()
+        btnClose.click()
         setUpdate(true)
-      }, 500);
+      }, 1000);
       
     })
     .catch((error) => {
-      btnSubmit.disabled = false;
+      submit.disabled = false;
       setError(true)
       setMessage(error.message || "Ocorreu um erro interno!")
     });
@@ -68,18 +65,16 @@ const Delete = ({ item, setUpdate}: IProps) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1>Deletar o gasto</h1>
+
             <button type="button" data-bs-dismiss="modal" aria-label="Close" id="closeDelete">
               <IoMdClose size={28} color="#595959"/>
             </button>
           </div>
           <div className="modal-body delete">
             <p>Tem certeza que quer deletar <span>{item?.item}</span>?</p>
+
             <form id="formdeleteInvoice" onSubmit={handleDelete}>
-              <button 
-                type="submit"
-                className="btn-primary-custom" 
-                style={{ marginTop: "24px" }}
-              >
+              <button style={{ marginTop: "24px" }} type="submit" className="btn-primary-custom">
                 Deletar
               </button>
             </form>

@@ -1,9 +1,9 @@
-import { Bill } from "../../types";
-import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
+import { FaMedal } from "react-icons/fa";
 
 import "./Statistics.scss"
 
-import { FaMedal } from "react-icons/fa";
+import { Bill } from "../../types";
+import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
 
 interface IRankingCategory {
   name_category: string;
@@ -12,7 +12,7 @@ interface IRankingCategory {
 
 const Statistics = ({ bill }: { bill: Bill[] }) => {
   const ranking: IRankingCategory[] = []
-
+  
   const getCategorys = () => {
     const categorys = new Set<string>()
     bill.forEach((item) => item.people === 'Eu' && categorys.add(item.category))
@@ -36,13 +36,13 @@ const Statistics = ({ bill }: { bill: Bill[] }) => {
   return (
     <div className="statistics">
       <div className="ranking">
-        {ranking?.length && ranking.map(item => (
+        {ranking?.length ? ranking.map(item => (
           <div key={item.name_category}>
             <FaMedal />
             <p className="ranking-title">{item.name_category}</p>
             <p className="ranking-value">{parseMoney(item.total)}</p>
           </div>
-        ))}
+        )) : null}
       </div>
     </div>
   )
