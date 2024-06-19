@@ -11,7 +11,7 @@ import Toast from '../../components/Toast/Toast'
 
 import { formatCurrency } from '../../utils/FormatValue'
 
-const CreateAccount = () => {
+export const CreateAccount = () => {
   const navigate = useNavigate()
 
   const [email, setEmail] = useState("")
@@ -164,6 +164,4 @@ const CreateAccount = () => {
       </div>
     </>
   )
-}
-
-export default CreateAccount
+};
