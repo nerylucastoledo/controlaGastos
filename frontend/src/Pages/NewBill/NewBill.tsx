@@ -4,11 +4,11 @@ import { Helmet } from 'react-helmet';
 
 import "./NewBill.scss"
 
-import Header from "../../components/Header/Header";
-import InputField from "../../components/InputField/InputField";
-import Loading from "../../components/Loadig/Loading";
-import SelectField from "../../components/SelectField/SelectField";
-import Toast from "../../components/Toast/Toast";
+import { Header} from "../../components/Header/Header";
+import { InputField } from "../../components/InputField/InputField";
+import { Loading } from "../../components/Loadig/Loading";
+import { SelectField } from "../../components/SelectField/SelectField";
+import { Toast } from "../../components/Toast/Toast";
 
 import { monthsAndYears } from "../../utils/Date";
 import { formatCurrency } from "../../utils/FormatValue";

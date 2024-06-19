@@ -3,7 +3,7 @@ interface IInput extends React.ComponentProps<'input'> {
   errorMessage: string;
 }
 
-const InputField = ({ label, name, errorMessage, ...props }: IInput) => {
+export const InputField = ({ label, name, errorMessage, ...props }: IInput) => {
   return (
     <div className='form-group'>
       {label && <label htmlFor={name}>{label}</label>}
@@ -16,5 +16,3 @@ const InputField = ({ label, name, errorMessage, ...props }: IInput) => {
     </div>
   )
 }
-
-export default InputField;

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import Cards from '../Cards';
+import { Cards } from '../Cards';
 import { mockBillToCardsComponent, mockCardsToCardsComponent } from '../../../utils/mockTest';
 
 const navigate = jest.fn()

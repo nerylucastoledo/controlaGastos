@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import InputField from '../InputField'
+import { InputField } from '../InputField'
 
 describe("InputField component", () => {
   it('should render input field with label', () => {

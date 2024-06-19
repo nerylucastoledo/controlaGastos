@@ -7,9 +7,9 @@ import "./Header.scss"
 
 import Logo from "../../assets/logo.png"
 
-import Menu from "./menu/Menu";
+import { Menu } from "./menu/Menu";
 
-const Header = () => {
+export const Header = () => {
   const navigate = useNavigate()
 
   return (
@@ -48,5 +48,3 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header;

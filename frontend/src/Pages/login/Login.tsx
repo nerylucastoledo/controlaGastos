@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom"
 // @ts-ignore
 import { Helmet } from 'react-helmet';
 
-import HeaderLoggedOut from "../../components/HeaderLoggedOut/HeaderLoggedOut"
-import InputField from "../../components/InputField/InputField"
-import Toast from "../../components/Toast/Toast"
+import { HeaderLoggedOut } from "../../components/HeaderLoggedOut/HeaderLoggedOut"
+import { InputField } from "../../components/InputField/InputField"
+import { Toast } from "../../components/Toast/Toast"
 
-const Login = () => {
+export const Login = () => {
   const navigate = useNavigate()
 
   const [email, setEmail] = useState("")
@@ -136,5 +136,3 @@ const Login = () => {
     </>
   )
 }
-
-export default Login

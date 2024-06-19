@@ -23,5 +23,3 @@ export const Toast = ({ message, error, hideToast }: IProps) => {
     </div>
   )
 }
-
-export default Toast

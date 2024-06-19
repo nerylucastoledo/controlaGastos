@@ -3,7 +3,7 @@ import { IoMdClose } from "react-icons/io";
 
 import "./DeleteSettings.scss"
 
-import Toast from "../Toast/Toast";
+import { Toast } from "../Toast/Toast";
 
 import { Card, Category, People } from "../../types";
 
@@ -19,7 +19,7 @@ const ENUM = {
   cartao: "cards",
 }
 
-const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
+export const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("")
 
@@ -94,5 +94,3 @@ const DeleteSettings = ({ item, setUpdate, option }: IProps) => {
     </div>
   )
 }
-
-export default DeleteSettings

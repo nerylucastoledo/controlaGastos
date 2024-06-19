@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import NewCard from '../NewCard';
+import { NewCard } from '../NewCard';
 
 const navigate = jest.fn()
 

@@ -1,12 +1,12 @@
 import { FormEvent, useState } from "react"
 import { IoMdClose } from "react-icons/io"
 
-import InputField from "../InputField/InputField"
-import Toast from "../Toast/Toast"
+import { InputField } from "../InputField/InputField"
+import { Toast } from "../Toast/Toast"
 
 import useLocalStorage from "../../hooks/useLocalStorage"
 
-const NewCard = () => {
+export const NewCard = () => {
   const [username] = useLocalStorage("username", "")
   const [name, setName] = useState("")
   const [color, setColor] = useState("")
@@ -133,5 +133,3 @@ const NewCard = () => {
     </div>
   )
 }
-
-export default NewCard

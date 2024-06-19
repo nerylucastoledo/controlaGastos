@@ -4,16 +4,16 @@ import { Helmet } from 'react-helmet';
 
 import "./Settings.scss"
 
-import Header from '../../components/Header/Header';
-import InputField from "../../components/InputField/InputField";
+import { DeleteSettings } from "../../components/DeleteSettings/DeleteSetings";
+import { EditSettings } from "../../components/EditSettings/EditSettings";
+import { Header } from '../../components/Header/Header';
+import { InputField } from "../../components/InputField/InputField";
+import { Loading } from "../../components/Loadig/Loading";
+import { Toast } from "../../components/Toast/Toast";
 
 import { MdEditSquare, MdDeleteForever } from "react-icons/md";
 
 import { useData } from "../../context/Data";
-import Loading from "../../components/Loadig/Loading";
-import Toast from "../../components/Toast/Toast";
-import DeleteSettings from "../../components/DeleteSettings/DeleteSetings";
-import EditSettings from "../../components/EditSettings/EditSettings";
 import { Card, Category, People } from "../../types";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { formatCurrency } from "../../utils/FormatValue";

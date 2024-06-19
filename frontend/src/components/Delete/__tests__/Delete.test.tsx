@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import Delete from '../Delete';
+import { Delete } from '../Delete';
 
 describe("Delete component", () => {
   beforeEach(() => {

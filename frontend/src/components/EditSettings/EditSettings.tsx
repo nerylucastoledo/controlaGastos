@@ -3,8 +3,8 @@ import { IoMdClose } from "react-icons/io";
 
 import "./EditSettings.scss"
 
-import InputField from "../InputField/InputField";
-import Toast from "../Toast/Toast";
+import { InputField } from "../InputField/InputField";
+import { Toast } from "../Toast/Toast";
 
 import { Card, Category, People } from "../../types";
 
@@ -20,7 +20,7 @@ const ENUM = {
   cartao: "cards"
 }
 
-const EditSettings = ({ item, setUpdate, option }: IProps) => {
+export const EditSettings = ({ item, setUpdate, option }: IProps) => {
   const [name, setName] = useState("")
   const [color, setColor] = useState("")
   const [inputError, setInputError] = useState("")
@@ -162,5 +162,3 @@ const EditSettings = ({ item, setUpdate, option }: IProps) => {
     </div>
   )
 }
-
-export default EditSettings

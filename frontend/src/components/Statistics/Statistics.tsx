@@ -10,7 +10,7 @@ interface IRankingCategory {
   total: number;
 }
 
-const Statistics = ({ bill }: { bill: Bill[] }) => {
+export const Statistics = ({ bill }: { bill: Bill[] }) => {
   const ranking: IRankingCategory[] = []
   
   const getCategorys = () => {
@@ -47,5 +47,3 @@ const Statistics = ({ bill }: { bill: Bill[] }) => {
     </div>
   )
 }
-
-export default Statistics

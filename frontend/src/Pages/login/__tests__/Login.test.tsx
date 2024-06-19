@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import Login from '../Login'
+import { Login } from '../Login'
 
 const navigate = jest.fn()
 

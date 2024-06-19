@@ -1,12 +1,12 @@
 import { FormEvent, useState } from "react"
 import { IoMdClose } from "react-icons/io"
 
-import InputField from "../InputField/InputField"
-import Toast from "../Toast/Toast"
+import { InputField } from "../InputField/InputField"
+import { Toast } from "../Toast/Toast"
 
 import useLocalStorage from "../../hooks/useLocalStorage"
 
-const NewCategory = () => {
+export const NewCategory = () => {
   const [username] = useLocalStorage("username", "")
   const [name, setName] = useState("")
   const [inputError, setInputError] = useState(false)
@@ -113,5 +113,3 @@ const NewCategory = () => {
     </div>
   )
 }
-
-export default NewCategory

@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 import "./CreateAccount.scss"
 
-import HeaderLoggedOut from '../../components/HeaderLoggedOut/HeaderLoggedOut'
-import InputField from '../../components/InputField/InputField'
-import Toast from '../../components/Toast/Toast'
+import { HeaderLoggedOut } from '../../components/HeaderLoggedOut/HeaderLoggedOut'
+import { InputField } from '../../components/InputField/InputField'
+import { Toast } from '../../components/Toast/Toast'
 
 import { formatCurrency } from '../../utils/FormatValue'
 
@@ -164,4 +164,4 @@ export const CreateAccount = () => {
       </div>
     </>
   )
-};
+}

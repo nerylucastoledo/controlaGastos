@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 
 import "./Chart.scss"
 
-import Loading from '../Loadig/Loading';
+import { Loading } from '../Loadig/Loading';
 
 import { options} from "./config"
 import useLocalStorage from '../../hooks/useLocalStorage';
@@ -36,7 +36,7 @@ interface IData {
   value: number;
 }
 
-const Chart = ({ year }: IProps) => {
+export const Chart = ({ year }: IProps) => {
   const [months, setMonths] = useState<string[]>([])
   const [values, setValues] = useState<number[]>([])
   const [username] = useLocalStorage("username", "")
@@ -78,5 +78,3 @@ const Chart = ({ year }: IProps) => {
     </div>
   )
 }
-
-export default Chart

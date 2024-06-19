@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import NewCategory from '../NewCategory';
+import { NewCategory } from '../NewCategory';
 
 const navigate = jest.fn()
 

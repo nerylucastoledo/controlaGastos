@@ -1,4 +1,4 @@
-import SelectField from "../SelectField/SelectField";
+import { SelectField } from "../SelectField/SelectField";
 
 import { monthsAndYears } from "../../utils/Date"
 
@@ -32,5 +32,3 @@ export const DateFilter = ({ setMonth, setYear, currentMonth, currentYear }: IPr
     </div>
   )
 }
-
-export default DateFilter;

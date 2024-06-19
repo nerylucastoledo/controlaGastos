@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Menu = () => {
+export const Menu = () => {
   const closeHeader = () => {
     const btnclose = document.querySelector("#closeMenu") as HTMLElement;
     btnclose?.click()
@@ -47,5 +47,3 @@ const Menu = () => {
     </ul>
   )
 }
-
-export default Menu;

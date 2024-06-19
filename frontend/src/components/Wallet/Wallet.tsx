@@ -6,7 +6,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import { Bill } from "../../types";
 import { formatCurrencyToNumber, parseMoney } from "../../utils/FormatValue";
 
-const Wallet = ({ bill }: { bill: Bill[] }) => {
+export const Wallet = ({ bill }: { bill: Bill[] }) => {
   const [salary] = useLocalStorage("salary", "")
 
   const valueToPay = bill.reduce((acc, item) => {
@@ -49,5 +49,3 @@ const Wallet = ({ bill }: { bill: Bill[] }) => {
     </div>
   )
 }
-
-export default Wallet

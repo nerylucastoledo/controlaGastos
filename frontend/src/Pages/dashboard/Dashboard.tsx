@@ -5,19 +5,19 @@ import { Helmet } from 'react-helmet';
 
 import "./Dashboards.scss"
 
-import Cards from "../../components/Cards/Cards"
-import Chart from "../../components/Chart/Chart"
-import DateFilter from "../../components/DateFilter/DateFilter"
-import Header from "../../components/Header/Header"
-import Loading from "../../components/Loadig/Loading";
-import RecentExpenses from "../../components/RecentExpenses/RecentExpenses"
-import Statistics from "../../components/Statistics/Statistics"
-import Toast from "../../components/Toast/Toast";
-import Wallet from "../../components/Wallet/Wallet"
+import { Cards } from "../../components/Cards/Cards"
+import { Chart } from "../../components/Chart/Chart"
+import { DateFilter } from "../../components/DateFilter/DateFilter"
+import { Header } from "../../components/Header/Header"
+import { Loading } from "../../components/Loadig/Loading";
+import { RecentExpenses } from "../../components/RecentExpenses/RecentExpenses"
+import { Statistics } from "../../components/Statistics/Statistics"
+import { Toast } from "../../components/Toast/Toast";
+import { Wallet } from "../../components/Wallet/Wallet"
 
 import { useData } from "../../context/Data"
 
-const Dashboard = () => {
+export const Dashboard = () => {
   const { data, loading, error, setMonth, setYear, month, year } = useData()
   const [closeError, setCloseError] = useState(false)
 
@@ -81,5 +81,3 @@ const Dashboard = () => {
     </div>
   )
 }
-
-export default Dashboard

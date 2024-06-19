@@ -3,7 +3,7 @@ import "./RecentExpenses.scss"
 import { Bill } from "../../types";
 import Icon, { IconName } from "../../utils/Icon";
 
-const RecentExpenses = ({ bill }: { bill: Bill[] }) => {
+export const RecentExpenses = ({ bill }: { bill: Bill[] }) => {
   const lastExpenses = bill.reverse().slice(0, 9)
 
   return (
@@ -29,5 +29,3 @@ const RecentExpenses = ({ bill }: { bill: Bill[] }) => {
     </div>
   )
 }
-
-export default RecentExpenses

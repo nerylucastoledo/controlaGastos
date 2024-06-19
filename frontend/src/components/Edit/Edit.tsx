@@ -3,8 +3,8 @@ import { IoMdClose } from "react-icons/io";
 
 import "./Edit.scss"
 
-import InputField from "../InputField/InputField";
-import Toast from "../Toast/Toast";
+import { InputField } from "../InputField/InputField";
+import { Toast } from "../Toast/Toast";
 
 import { Bill } from "../../types";
 import { formatCurrency } from "../../utils/FormatValue";
@@ -14,7 +14,7 @@ interface IProps {
   setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Edit = ({ item, setUpdate }: IProps) => {
+export const Edit = ({ item, setUpdate }: IProps) => {
   const [name, setName] = useState("")
   const [value, setValue] = useState("")
   const [inputError, setInputError] = useState<string[]>([])
@@ -140,5 +140,3 @@ const Edit = ({ item, setUpdate }: IProps) => {
     </div>
   )
 }
-
-export default Edit

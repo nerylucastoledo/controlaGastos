@@ -5,7 +5,7 @@ interface IInput extends React.ComponentProps<'select'> {
   defaultValue: string;
 }
 
-const SelectField = ({ label, name, options, defaultValue, ...props }: IInput) => {
+export const SelectField = ({ label, name, options, defaultValue, ...props }: IInput) => {
   return (
     <div className='select-group'>
       {label && <label htmlFor={name}>{label}</label>}
@@ -20,5 +20,3 @@ const SelectField = ({ label, name, options, defaultValue, ...props }: IInput) =
     </div>
   )
 }
-
-export default SelectField;

@@ -13,7 +13,7 @@ interface IProps {
   setDeleteItem: React.Dispatch<React.SetStateAction<Bill | null>>;
 }
 
-const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProps) => {
+export const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProps) => {
   const dataFilteredByPeople = data.filter(item => item.people === peopleSelected)
 
   const valueToPay = dataFilteredByPeople.reduce((acc, item) => {
@@ -64,5 +64,3 @@ const InvoiceItem = ({ data, peopleSelected, setEditItem, setDeleteItem }: IProp
     </div>
   )
 }
-
-export default InvoiceItem

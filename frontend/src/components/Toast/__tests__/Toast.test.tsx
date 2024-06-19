@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
-import Toast from '../Toast'
+import { Toast } from '../Toast'
 
 describe("Toast component", () => {
   it('deveria mostrar a mensagem de "test error" na tela com a cor vermelha caso o erro seja true', () => {

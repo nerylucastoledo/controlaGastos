@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
-import Wallet from '../Wallet'
+import { Wallet } from '../Wallet'
 
 import { mockWith3Data } from '../../../utils/mockTest'
 import useLocalStorage from '../../../hooks/useLocalStorage'

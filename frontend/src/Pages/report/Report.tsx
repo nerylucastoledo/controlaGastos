@@ -5,14 +5,14 @@ import { ImCool } from "react-icons/im";
 
 import "./Report.scss"
 
-import Header from '../../components/Header/Header'
+import { Header } from '../../components/Header/Header'
+import { Loading } from '../../components/Loadig/Loading';
+import { SelectField } from '../../components/SelectField/SelectField';
 
 import { monthsAndYears } from '../../utils/Date';
 import { useFecth } from '../../hooks/useFetch';
 import { IData } from '../../types';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import Loading from '../../components/Loadig/Loading';
-import SelectField from '../../components/SelectField/SelectField';
 import { formatCurrencyToNumber, parseMoney } from '../../utils/FormatValue';
 
 interface IReport {
@@ -20,7 +20,7 @@ interface IReport {
   "value": number;
 }
 
-const Report = () => {
+export const Report = () => {
   const [username] = useLocalStorage("username", "")
 
   const { currentMonth, currentYear, months, years } = monthsAndYears()
@@ -127,5 +127,3 @@ const Report = () => {
     </>
   )
 }
-
-export default Report

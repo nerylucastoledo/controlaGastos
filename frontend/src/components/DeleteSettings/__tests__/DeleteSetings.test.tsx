@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import DeleteSettings from '../DeleteSetings';
+import { DeleteSettings } from '../DeleteSetings';
 
 describe("DeleteSettings component", () => {
   beforeEach(() => {

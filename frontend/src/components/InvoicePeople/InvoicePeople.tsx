@@ -6,7 +6,7 @@ interface IProps {
   setPeopleSelected: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const InvoicePeople = ({ peoples, peopleSelected, setPeopleSelected }: IProps) => {
+export const InvoicePeople = ({ peoples, peopleSelected, setPeopleSelected }: IProps) => {
   return (
     <div className="invoice__container-names">
       <button 
@@ -29,5 +29,3 @@ const InvoicePeople = ({ peoples, peopleSelected, setPeopleSelected }: IProps) =
     </div>
   )
 }
-
-export default InvoicePeople

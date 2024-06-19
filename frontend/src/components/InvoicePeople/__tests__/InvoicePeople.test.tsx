@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import InvoicePeople from '../InvoicePeople'
+import { InvoicePeople } from '../InvoicePeople'
 
 const mockPeoples = ["People 1"]
 const mockPeoples2 = ["People 1", "People 2", "People 3"]

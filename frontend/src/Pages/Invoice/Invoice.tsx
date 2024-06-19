@@ -6,13 +6,13 @@ import { Helmet } from 'react-helmet';
 
 import "./Invoice.scss"
 
-import Delete from "../../components/Delete/Delete";
-import Edit from "../../components/Edit/Edit";
-import Header from "../../components/Header/Header";
-import InvoiceItem from "../../components/InvoiceItem/InvoiceItem";
-import InvoicePeople from "../../components/InvoicePeople/InvoicePeople";
-import Loading from "../../components/Loadig/Loading";
-import Toast from "../../components/Toast/Toast";
+import { Delete } from "../../components/Delete/Delete";
+import { Edit } from "../../components/Edit/Edit";
+import { Header } from "../../components/Header/Header";
+import { InvoiceItem } from "../../components/InvoiceItem/InvoiceItem";
+import { InvoicePeople } from "../../components/InvoicePeople/InvoicePeople";
+import { Loading } from "../../components/Loadig/Loading";
+import { Toast } from "../../components/Toast/Toast";
 
 import { Bill } from "../../types";
 import { useData } from "../../context/Data";

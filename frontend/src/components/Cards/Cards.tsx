@@ -10,7 +10,7 @@ interface IInvoice extends ICard {
   total: number;
 }
 
-const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
+export const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
   const navigate = useNavigate()
 
   const getCardsOfMonth = () => {
@@ -78,5 +78,3 @@ const Cards = ({ cards, bill }: { cards: Card[], bill: Bill[] }) => {
     </div>
   )
 }
-
-export default Cards

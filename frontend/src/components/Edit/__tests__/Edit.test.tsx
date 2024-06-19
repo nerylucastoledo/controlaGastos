@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 
-import Edit from '../Edit'
+import { Edit } from '../Edit'
 import { Bill } from '../../../types';
 import { act } from 'react';
 

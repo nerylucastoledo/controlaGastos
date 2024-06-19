@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 
-import EditSettings from '../EditSettings'
+import { EditSettings } from '../EditSettings'
 
 describe("EditSettings component", () => {
   beforeEach(() => {

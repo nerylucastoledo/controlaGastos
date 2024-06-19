@@ -3,7 +3,7 @@ import { IoMdClose } from "react-icons/io";
 
 import "./Delete.scss"
 
-import Toast from "../Toast/Toast";
+import { Toast } from "../Toast/Toast";
 
 import { Bill } from "../../types";
 
@@ -12,7 +12,7 @@ interface IProps {
   setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Delete = ({ item, setUpdate}: IProps) => {
+export const Delete = ({ item, setUpdate}: IProps) => {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("")
 
@@ -84,5 +84,3 @@ const Delete = ({ item, setUpdate}: IProps) => {
     </div>
   )
 }
-
-export default Delete

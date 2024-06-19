@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import InvoiceItem from '../InvoiceItem'
+import { InvoiceItem } from '../InvoiceItem'
+
 import { mockWithDataToInvoiceItem } from '../../../utils/mockTest'
 
 describe("InvoiceItem component", () => {
