@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./App.scss"
 import "./style/global.scss"
 
-import { CreateAccount } from "./pages/createAccount/CreateAccount.tsx";
+import { CreateAccount } from "./pages/createAccount/CreateAccount";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { Report } from "./pages/report/Report";
 import Settings from "./pages/Settings/Settings";
