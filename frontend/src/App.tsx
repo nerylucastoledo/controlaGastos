@@ -5,19 +5,20 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./App.scss"
 import "./style/global.scss"
 
-import Dashboard from "./pages/Dashboard/Dashboard";
+import CreateAccount from "./pages/createAccount/CreateAccount";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Report from "./pages/report/Report";
-import Login from "./pages/Login/Login";
-import CreateAccount from "./pages/CreateAccount/CreateAccount";
-import NotFound from "./pages/NotFound/NotFound";
 import Settings from "./pages/Settings/Settings";
 import ProtectedRoute from "./utils/PrivateRoute";
+import Login from "./pages/login/Login";
 import NewPeople from "./components/NewPeople/NewPeople";
 import NewCategory from "./components/NewCategory/NewCategory";
 import NewCard from "./components/NewCard/NewCard";
-import { DataContextProvider } from "./context/Data";
+import NotFound from "./pages/notFound/NotFound";
 import Invoice from "./pages/Invoice/Invoice";
 import NewBill from "./pages/NewBill/NewBill";
+
+import { DataContextProvider } from "./context/Data";
 
 function App() {
   return (
